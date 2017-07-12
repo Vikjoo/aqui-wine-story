@@ -106,7 +106,7 @@ public class OrderService {
 				return getOrderRepository().findByCustomerLastNameContainingIgnoreCaseAndDueDateAfter(
 						optionalFilter.get(), optionalFilterDate.get(), pageable);
 			} else {
-				return getOrderRepository().findByCustomerLqstNameContainingIgnoreCase(optionalFilter.get(), pageable);
+				return getOrderRepository().findByCustomerLastNameContainingIgnoreCase(optionalFilter.get(), pageable);
 			}
 		} else {
 			if (optionalFilterDate.isPresent()) {
@@ -123,10 +123,10 @@ public class OrderService {
 
 	public long countAnyMatchingAfterDueDate(Optional<String> optionalFilter, Optional<LocalDate> optionalFilterDate) {
 		if (optionalFilter.isPresent() && optionalFilterDate.isPresent()) {
-			return getOrderRepository().countByCustomerFullNameContainingIgnoreCaseAndDueDateAfter(optionalFilter.get(),
+			return getOrderRepository().countByCustomerLastNameContainingIgnoreCaseAndDueDateAfter(optionalFilter.get(),
 					optionalFilterDate.get());
 		} else if (optionalFilter.isPresent()) {
-			return getOrderRepository().countByCustomerFullNameContainingIgnoreCase(optionalFilter.get());
+			return getOrderRepository().countByCustomerLastNameContainingIgnoreCase(optionalFilter.get());
 		} else if (optionalFilterDate.isPresent()) {
 			return getOrderRepository().countByDueDateAfter(optionalFilterDate.get());
 		} else {
