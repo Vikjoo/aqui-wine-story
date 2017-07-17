@@ -26,6 +26,12 @@ public class CustomerViewDesign extends VerticalLayout {
 	protected VerticalLayout form;
 	protected TextField email;
 	protected TextField name;
+	protected TextField firstName;
+	protected TextField dob;
+	protected TextField doe;
+	protected TextField tom;
+	protected TextField memSince;
+	protected TextField company;
 	protected TextField password;
 	protected Button update;
 	protected Button cancel;

@@ -35,7 +35,7 @@ public class CustomerService implements CrudService<Customer> {
 		if (filter.isPresent()) {
 			String repositoryFilter = "%" + filter.get() + "%";
 			return getRepository().findByFirstNameLikeIgnoreCaseOrLastNameLikeIgnoreCase(repositoryFilter,
-					repositoryFilter, repositoryFilter, pageable);
+					repositoryFilter,  pageable);
 		} else {
 			return find(pageable);
 		}

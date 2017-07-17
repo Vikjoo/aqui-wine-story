@@ -11,7 +11,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 	Page<Customer> findBy(Pageable pageable);
 
 	Page<Customer> findByFirstNameLikeIgnoreCaseOrLastNameLikeIgnoreCase(String repositoryFilter,
-			String repositoryFilter2, String repositoryFilter3, Pageable pageable);
+			String repositoryFilter2,  Pageable pageable);
 
 	Customer findByEmail(String username);
 

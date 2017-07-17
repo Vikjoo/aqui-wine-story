@@ -74,7 +74,7 @@ public class OrderEditView extends OrderEditViewDesign implements View {
 
 		// Must bind sub properties manually until
 		// https://github.com/vaadin/framework/issues/9210 is fixed
-		binder.bind(fullName, "customer.fullName");
+		binder.bind(fullName, "customer.lastName");
 		binder.bind(phone, "customer.phoneNumber");
 		binder.bind(details, "customer.details");
 

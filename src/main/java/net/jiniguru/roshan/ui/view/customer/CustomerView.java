@@ -59,7 +59,7 @@ public class CustomerView extends AbstractCrudView<Customer> {
 	public void init() {
 		super.init();
 		presenter.init(this);
-		getGrid().setColumns("email", "name");
+		getGrid().setColumns("email", "lastName");
 	}
 
 	@Override
