@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -14,6 +15,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.vaadin.spring.annotation.SpringComponent;
+import com.vaadin.ui.ComboBox;
+import com.vaadin.ui.DateField;
+import com.vaadin.ui.Image;
+import com.vaadin.ui.TextArea;
+import com.vaadin.ui.TextField;
+
 import net.jiniguru.roshan.backend.CustomerRepository;
 import net.jiniguru.roshan.backend.OrderRepository;
 import net.jiniguru.roshan.backend.PickupLocationRepository;
@@ -346,6 +353,19 @@ public class DataGenerator implements HasLogger {
 		customer.setLastName(last);
 		customer.setPhoneNumber(getRandomPhone());
 		customer.setEmail(first+"@gmail.com");
+		customer.setDob(LocalDate.now());
+		customer.setDoe(LocalDate.now());
+		customer.setTom("Option1");
+		customer.setMemSince(LocalDate.now());
+		customer.setCompany("Aqui");
+		customer.setBillAddress("Ile Maurice");
+		customer.setDeliveryAddress("Ile Maurice");
+		customer.setHomeNumber("+230 7123458");
+		customer.setMobileNumber("+230 7123458");
+		customer.setQrCode("+230 7123458");
+		customer.setCoursedFollowed("+230 7123458");
+		customer.setNote("N/A");
+		customer.setStatus("active");
 
 		customer.setFirstName(first);
 		if (random.nextInt(10) == 0) {
