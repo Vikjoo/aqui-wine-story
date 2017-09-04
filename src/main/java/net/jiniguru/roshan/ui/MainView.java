@@ -17,6 +17,7 @@ import net.jiniguru.roshan.ui.navigation.NavigationManager;
 import net.jiniguru.roshan.ui.view.admin.product.ProductAdminView;
 import net.jiniguru.roshan.ui.view.admin.user.UserAdminView;
 import net.jiniguru.roshan.ui.view.customer.CustomerView;
+import net.jiniguru.roshan.ui.view.customer.b2b.B2CustomerView;
 import net.jiniguru.roshan.ui.view.dashboard.DashboardView;
 import net.jiniguru.roshan.ui.view.storefront.StorefrontView;
 import com.vaadin.ui.Button;
@@ -49,6 +50,7 @@ public class MainView extends MainViewDesign implements ViewDisplay {
 		attachNavigation(storefront, StorefrontView.class);
 		attachNavigation(dashboard, DashboardView.class);
 		attachNavigation(customers, CustomerView.class);
+		attachNavigation(bcustomers, B2CustomerView.class);
 		attachNavigation(users, UserAdminView.class);
 		attachNavigation(products, ProductAdminView.class);
 

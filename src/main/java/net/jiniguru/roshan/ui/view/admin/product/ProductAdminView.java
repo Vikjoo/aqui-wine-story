@@ -49,6 +49,14 @@ public class ProductAdminView extends AbstractCrudView<Product> {
 	@Override
 	public void bindFormFields(BeanValidationBinder<Product> binder) {
 		binder.forField(getViewComponent().price).withConverter(priceToStringConverter).bind(PRICE_PROPERTY);
+		binder.bind(getViewComponent().typeOfWine, "productWine.typeOfWine");
+/*		binder.bind(getViewComponent().typeOfWine, "productWine.typeOfWine");
+		binder.bind(getViewComponent().typeOfWine, "productWine.typeOfWine");
+		binder.bind(getViewComponent().typeOfWine, "productWine.typeOfWine");
+		binder.bind(getViewComponent().typeOfWine, "productWine.typeOfWine");
+		binder.bind(getViewComponent().typeOfWine, "productWine.typeOfWine");
+		binder.bind(getViewComponent().typeOfWine, "productWine.typeOfWine");
+		binder.bind(getViewComponent().typeOfWine, "productWine.typeOfWine");*/
 		binder.bindInstanceFields(getViewComponent());
 	}
 

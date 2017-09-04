@@ -28,6 +28,7 @@ public class ProductAdminViewDesign extends VerticalLayout {
 	protected VerticalLayout form;
 	protected TextField name;
 	protected TextField price;
+	protected TextField typeOfWine;
 	protected Button update;
 	protected Button cancel;
 	protected Button delete;

@@ -19,6 +19,8 @@ import net.jiniguru.roshan.ui.view.admin.AbstractCrudPresenter;
 public class CustomerPresenter extends AbstractCrudPresenter<Customer, CustomerService, CustomerView>
 		implements Serializable {
 
+	private Customer customerItem;
+
 	@Autowired
 	public CustomerPresenter(CustomerDataProvider customerDataProvider, NavigationManager navigationManager,
 			CustomerService service) {
@@ -32,6 +34,17 @@ public class CustomerPresenter extends AbstractCrudPresenter<Customer, CustomerS
 	@Override
 	protected void editItem(Customer item) {
 		super.editItem(item);
+		this.setCustomerItem(item);
 		getView().setPasswordRequired(item.isNew());
 	}
+
+	public Customer getCustomerItem() {
+		return customerItem;
+	}
+
+	public void setCustomerItem(Customer customerItem) {
+		this.customerItem = customerItem;
+	}
+
+
 }

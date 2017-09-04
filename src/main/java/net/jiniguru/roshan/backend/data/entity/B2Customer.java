@@ -23,70 +23,53 @@ import com.vaadin.ui.TextArea;
 import com.vaadin.ui.TextField;
 
 @Entity
-public class Customer extends AbstractEntity {
+public class B2Customer extends AbstractEntity {
 
 	@NotNull
 	@NotEmpty
 	@Size(max = 255)
 	private String email;
-	@NotNull
-	@NotEmpty
+
 	@Size(max = 255)
 	private String firstName;
-	@NotNull
-	@NotEmpty
-	@Size(max = 255)
-	private String phoneNumber;
+
 	@Size(max = 255)
 	private String details;
 
-	@NotNull
-	@NotEmpty
+
 	@Size(max = 255)
 	private String lastName;
 	
+	private LocalDate enrollmentDate;
 	
-	private LocalDate dob;
+	
+	@NotNull
+	@NotEmpty
+	private String company;
+	
+	@Size(max = 255)
+	private String billAddress;
+	@Size(max = 255)
+	private String deliveryAddress;
+	@NotNull
+	@NotEmpty
+	@Size(max = 255)
+	private String workNumber;
+
+	
+	@Size(max = 255)
+	private String coursedFollowed;
+	@Size(max = 255)
+	private String note;
+	@Size(max = 255)
+	private String status;
+	
+	private boolean locked = false;
 	
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@OrderColumn(name = "id")
-	private List<Children> childrenList = new ArrayList<>();
-	
-	public LocalDate getDoe() {
-		return doe;
+	public void  setId(Long id) {
+		
 	}
-
-
-
-	public void setDoe(LocalDate doe) {
-		this.doe = doe;
-	}
-
-
-
-	public String getTom() {
-		return tom;
-	}
-
-
-
-	public void setTom(String tom) {
-		this.tom = tom;
-	}
-
-
-
-	public LocalDate getMemSince() {
-		return memSince;
-	}
-
-
-
-	public void setMemSince(LocalDate memSince) {
-		this.memSince = memSince;
-	}
-
 
 
 	public String getCompany() {
@@ -125,39 +108,11 @@ public class Customer extends AbstractEntity {
 
 
 
-	public String getHomeNumber() {
-		return homeNumber;
-	}
 
 
 
-	public void setHomeNumber(String homeNumber) {
-		this.homeNumber = homeNumber;
-	}
 
 
-
-	public String getMobileNumber() {
-		return mobileNumber;
-	}
-
-
-
-	public void setMobileNumber(String mobileNumber) {
-		this.mobileNumber = mobileNumber;
-	}
-
-
-
-	public String getQrCode() {
-		return qrCode;
-	}
-
-
-
-	public void setQrCode(String qrCode) {
-		this.qrCode = qrCode;
-	}
 
 
 
@@ -197,45 +152,14 @@ public class Customer extends AbstractEntity {
 
 
 
-	private LocalDate doe;
-	@Size(max = 255)
-	private String tom;
-	
-	private LocalDate memSince;
-	@Size(max = 255)
-	private String company;
-	@Size(max = 255)
-	private String billAddress;
-	@Size(max = 255)
-	private String deliveryAddress;
-	
-	@Size(max = 255)
-	private String homeNumber;
-	@Size(max = 255)
-	private String mobileNumber;
-	@Size(max = 255)
-	private String qrCode;
-	@Size(max = 255)
-	private String coursedFollowed;
-	@Size(max = 255)
-	private String note;
-	@Size(max = 255)
-	private String status;
-	
-	private boolean locked = false;
-	public Customer() {
+
+	public B2Customer() {
 		// Empty constructor is needed by Spring Data / JPA
 	}
 
 	
 
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
 
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
 
 	public String getDetails() {
 		return details;
@@ -287,27 +211,34 @@ public class Customer extends AbstractEntity {
 
 
 
-	public LocalDate getDob() {
-		return dob;
+	public String getWorkNumber() {
+		return workNumber;
 	}
 
 
 
-	public void setDob(LocalDate dob) {
-		this.dob = dob;
+	public void setWorkNumber(String workNumber) {
+		this.workNumber = workNumber;
 	}
 
 
 
-	public List<Children> getChildrenList() {
-		return childrenList;
+
+
+	public LocalDate getEnrollmentDate() {
+		return enrollmentDate;
 	}
 
 
 
-	public void setChildrenList(List<Children> childrenList) {
-		this.childrenList = childrenList;
+
+
+	public void setEnrollmentDate(LocalDate enrollmentDate) {
+		this.enrollmentDate = enrollmentDate;
 	}
+
+
+
 
 
 }

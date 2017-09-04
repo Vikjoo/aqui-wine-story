@@ -25,15 +25,18 @@ import net.jiniguru.roshan.backend.CustomerRepository;
 import net.jiniguru.roshan.backend.OrderRepository;
 import net.jiniguru.roshan.backend.PickupLocationRepository;
 import net.jiniguru.roshan.backend.ProductRepository;
+import net.jiniguru.roshan.backend.ProductWineRepository;
 import net.jiniguru.roshan.backend.UserRepository;
 import net.jiniguru.roshan.backend.data.OrderState;
 import net.jiniguru.roshan.backend.data.Role;
+import net.jiniguru.roshan.backend.data.entity.Children;
 import net.jiniguru.roshan.backend.data.entity.Customer;
 import net.jiniguru.roshan.backend.data.entity.HistoryItem;
 import net.jiniguru.roshan.backend.data.entity.Order;
 import net.jiniguru.roshan.backend.data.entity.OrderItem;
 import net.jiniguru.roshan.backend.data.entity.PickupLocation;
 import net.jiniguru.roshan.backend.data.entity.Product;
+import net.jiniguru.roshan.backend.data.entity.ProductWine;
 import net.jiniguru.roshan.backend.data.entity.User;
 
 @SpringComponent
@@ -317,7 +320,8 @@ public class DataGenerator implements HasLogger {
 
 	@Bean
 	public CommandLineRunner loadData(OrderRepository orders, UserRepository users, ProductRepository products,
-			CustomerRepository customers, PickupLocationRepository pickupLocations, PasswordEncoder passwordEncoder) {
+			CustomerRepository customers, PickupLocationRepository pickupLocations, PasswordEncoder passwordEncoder,
+			ProductWineRepository proWineRepo) {
 		return args -> {
 			if (users.count() != 0L) {
 				getLogger().info("Using existing database");
@@ -327,8 +331,10 @@ public class DataGenerator implements HasLogger {
 			getLogger().info("Generating demo data");
 			getLogger().info("... generating users");
 			createUsers(users);
+			getLogger().info("... generating wine catalogue");
+			createWineCatalog(proWineRepo);
 			getLogger().info("... generating products");
-			createProducts(products);
+			createProducts(products,proWineRepo);
 			getLogger().info("... generating customers");
 			createCustomers(customers);
 			getLogger().info("... generating pickup locations");
@@ -338,6 +344,13 @@ public class DataGenerator implements HasLogger {
 
 			getLogger().info("Generated demo data");
 		};
+	}
+
+
+
+	private void createWineCatalog(ProductWineRepository proWineRepo) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	private void createCustomers(CustomerRepository customerRepo) {
@@ -366,7 +379,9 @@ public class DataGenerator implements HasLogger {
 		customer.setCoursedFollowed("+230 7123458");
 		customer.setNote("N/A");
 		customer.setStatus("active");
-
+		List<Children> childrenList = new ArrayList<>();
+		childrenList.add(new Children("Jean",LocalDate.now()));
+		customer.setChildrenList(childrenList);
 		customer.setFirstName(first);
 		if (random.nextInt(10) == 0) {
 			customer.setDetails("Very important customer");
@@ -572,16 +587,21 @@ public class DataGenerator implements HasLogger {
 		store.setName("Store");
 		pickupLocations.add(pickupRepo.save(store));
 		PickupLocation bakery = new PickupLocation();
-		bakery.setName("Bakery");
+		bakery.setName("Online");
 		pickupLocations.add(pickupRepo.save(bakery));
 	}
 
-	private void createProducts(ProductRepository productsRepo) {
+	private void createProducts(ProductRepository productsRepo, ProductWineRepository proWineRepo) {
 		for (int i = 0; i < 10; i++) {
 			Product product = new Product();
 			product.setName(getRandomProductName());
 			double doublePrice = 2.0 + random.nextDouble() * 100.0;
 			product.setPrice((int) (doublePrice * 100.0));
+			ProductWine pw = new ProductWine();
+			pw.setTypeOfWine("pinotage");
+			proWineRepo.save(pw);
+			product.setProductWine(pw);
+			
 			products.add(productsRepo.save(product));
 		}
 	}
