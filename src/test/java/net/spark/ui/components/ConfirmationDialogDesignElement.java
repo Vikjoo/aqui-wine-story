@@ -1,4 +1,4 @@
-package net.jiniguru.roshan.ui.components;
+package net.spark.ui.components;
 
 import com.vaadin.testbench.elements.ButtonElement;
 import com.vaadin.testbench.elements.VerticalLayoutElement;

@@ -1,4 +1,4 @@
-package net.jiniguru.roshan.ui.view.admin.product;
+package net.spark.ui.view.admin.product;
 
 import com.vaadin.testbench.TestBenchElement;
 import com.vaadin.testbench.elements.GridElement;

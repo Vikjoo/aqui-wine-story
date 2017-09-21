@@ -1,4 +1,4 @@
-package net.jiniguru.roshan.ui.view.orderedit;
+package net.spark.ui.view.orderedit;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import com.vaadin.testbench.elements.CssLayoutElement;
 import com.vaadin.testbench.elements.TextFieldElement;
 import com.vaadin.testbench.elementsbase.ServerClass;
 
-@ServerClass("net.jiniguru.roshan.ui.view.orderedit.OrderHistory")
+@ServerClass("net.spark.ui.view.orderedit.OrderHistory")
 public class OrderHistoryElement extends OrderHistoryDesignElement {
 
 	private TextFieldElement getCommentInput() {

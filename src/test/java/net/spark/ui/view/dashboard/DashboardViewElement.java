@@ -1,4 +1,4 @@
-package net.jiniguru.roshan.ui.view.dashboard;
+package net.spark.ui.view.dashboard;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import com.vaadin.testbench.elementsbase.ServerClass;
 
 public class DashboardViewElement extends DashboardViewDesignElement {
 
-	@ServerClass("net.jiniguru.roshan.ui.view.dashboard.BoardBox")
+	@ServerClass("net.spark.ui.view.dashboard.BoardBox")
 	public static class BoardBoxElement extends CssLayoutElement {
 
 		public String getHeader() {

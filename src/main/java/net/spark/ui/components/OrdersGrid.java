@@ -14,8 +14,8 @@ import org.springframework.web.util.HtmlUtils;
 import org.vaadin.spring.annotation.PrototypeScope;
 
 import com.vaadin.spring.annotation.SpringComponent;
-import net.jiniguru.roshan.backend.data.entity.Customer;
-import net.jiniguru.roshan.backend.data.entity.Order;
+import net.spark.backend.data.entity.Customer;
+import net.spark.backend.data.entity.Order;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.renderers.HtmlRenderer;
 

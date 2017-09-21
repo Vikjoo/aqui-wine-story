@@ -14,9 +14,9 @@ import com.vaadin.data.provider.Query;
 import com.vaadin.data.provider.QuerySortOrder;
 import com.vaadin.shared.data.sort.SortDirection;
 import com.vaadin.spring.annotation.SpringComponent;
-import net.jiniguru.roshan.app.BeanLocator;
-import net.jiniguru.roshan.backend.data.entity.Order;
-import net.jiniguru.roshan.backend.service.OrderService;
+import net.spark.app.BeanLocator;
+import net.spark.backend.data.entity.Order;
+import net.spark.backend.service.OrderService;
 
 @SpringComponent
 @PrototypeScope

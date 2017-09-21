@@ -8,10 +8,11 @@ import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.spring.annotation.UIScope;
 import com.vaadin.spring.internal.Conventions;
 import com.vaadin.spring.navigator.SpringNavigator;
-import net.jiniguru.roshan.app.security.SecurityUtils;
-import net.jiniguru.roshan.backend.data.Role;
-import net.jiniguru.roshan.ui.view.dashboard.DashboardView;
-import net.jiniguru.roshan.ui.view.storefront.StorefrontView;
+import net.spark.app.security.SecurityUtils;
+import net.spark.backend.data.Role;
+import net.spark.ui.view.dashboard.DashboardView;
+import net.spark.ui.view.storefront.StorefrontView;
+
 
 /**
  * Governs view navigation of the app.

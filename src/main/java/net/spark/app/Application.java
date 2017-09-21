@@ -10,12 +10,12 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.vaadin.spring.events.annotation.EnableEventBus;
 
-import net.jiniguru.roshan.app.security.SecurityConfig;
-import net.jiniguru.roshan.backend.OrderRepository;
-import net.jiniguru.roshan.backend.data.entity.Order;
-import net.jiniguru.roshan.backend.service.UserService;
-import net.jiniguru.roshan.backend.util.LocalDateJpaConverter;
-import net.jiniguru.roshan.ui.AppUI;
+import net.spark.app.security.SecurityConfig;
+import net.spark.backend.OrderRepository;
+import net.spark.backend.data.entity.Order;
+import net.spark.backend.service.UserService;
+import net.spark.backend.util.LocalDateJpaConverter;
+import net.spark.ui.AppUI;
 
 @SpringBootApplication(scanBasePackageClasses = { AppUI.class, Application.class, UserService.class,
 		SecurityConfig.class })

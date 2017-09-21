@@ -1,4 +1,4 @@
-package net.jiniguru.roshan.ui.view.orderedit;
+package net.spark.ui.view.orderedit;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -10,16 +10,16 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 
-import net.jiniguru.roshan.AbstractIT;
-import net.jiniguru.roshan.backend.data.OrderState;
-import net.jiniguru.roshan.backend.data.entity.Customer;
-import net.jiniguru.roshan.ui.view.orderedit.ProductInfoElement.ProductOrderData;
+import net.spark.AbstractIT;
+import net.spark.backend.data.OrderState;
+import net.spark.backend.data.entity.Customer;
+import net.spark.ui.view.orderedit.ProductInfoElement.ProductOrderData;
 import com.vaadin.testbench.HasDriver;
 import com.vaadin.testbench.elements.CssLayoutElement;
 import com.vaadin.testbench.elements.LabelElement;
 import com.vaadin.testbench.elementsbase.ServerClass;
 
-@ServerClass("net.jiniguru.roshan.ui.view.orderedit.OrderEditView")
+@ServerClass("net.spark.ui.view.orderedit.OrderEditView")
 public class OrderEditViewElement extends OrderEditViewDesignElement {
 
 	public static class OrderInfo {

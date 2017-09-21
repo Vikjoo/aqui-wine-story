@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-import net.jiniguru.roshan.backend.data.OrderState;
+import net.spark.backend.data.OrderState;
 
 @Entity
 public class HistoryItem extends AbstractEntity {

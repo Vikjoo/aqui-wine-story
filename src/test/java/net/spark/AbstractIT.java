@@ -1,4 +1,4 @@
-package net.jiniguru.roshan;
+package net.spark;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,9 +13,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.slf4j.LoggerFactory;
 
-import net.jiniguru.roshan.ui.view.LoginViewElement;
-import net.jiniguru.roshan.ui.view.dashboard.DashboardViewElement;
-import net.jiniguru.roshan.ui.view.storefront.StorefrontViewElement;
+import net.spark.ui.view.LoginViewElement;
+import net.spark.ui.view.dashboard.DashboardViewElement;
+import net.spark.ui.view.storefront.StorefrontViewElement;
 import com.vaadin.testbench.By;
 import com.vaadin.testbench.ElementQuery;
 import com.vaadin.testbench.HasDriver;

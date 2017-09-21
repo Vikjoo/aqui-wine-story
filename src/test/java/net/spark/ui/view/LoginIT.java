@@ -1,11 +1,11 @@
-package net.jiniguru.roshan.ui.view;
+package net.spark.ui.view;
 
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
-import net.jiniguru.roshan.AbstractIT;
-import net.jiniguru.roshan.ui.view.orderedit.OrderEditViewElement;
+import net.spark.AbstractIT;
+import net.spark.ui.view.orderedit.OrderEditViewElement;
 
 public class LoginIT extends AbstractIT {
 

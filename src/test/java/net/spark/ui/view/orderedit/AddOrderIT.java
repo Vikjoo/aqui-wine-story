@@ -1,4 +1,4 @@
-package net.jiniguru.roshan.ui.view.orderedit;
+package net.spark.ui.view.orderedit;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -12,15 +12,15 @@ import org.junit.Test;
 
 import com.vaadin.data.Result;
 import com.vaadin.data.ValueContext;
-import net.jiniguru.roshan.AbstractIT;
-import net.jiniguru.roshan.backend.data.OrderState;
-import net.jiniguru.roshan.backend.data.entity.Customer;
-import net.jiniguru.roshan.ui.components.ConfirmationDialogDesignElement;
-import net.jiniguru.roshan.ui.util.DollarPriceConverter;
-import net.jiniguru.roshan.ui.view.MenuElement;
-import net.jiniguru.roshan.ui.view.orderedit.OrderEditViewElement.OrderInfo;
-import net.jiniguru.roshan.ui.view.orderedit.ProductInfoElement.ProductOrderData;
-import net.jiniguru.roshan.ui.view.storefront.StorefrontViewElement;
+import net.spark.AbstractIT;
+import net.spark.backend.data.OrderState;
+import net.spark.backend.data.entity.Customer;
+import net.spark.ui.components.ConfirmationDialogDesignElement;
+import net.spark.ui.util.DollarPriceConverter;
+import net.spark.ui.view.MenuElement;
+import net.spark.ui.view.orderedit.OrderEditViewElement.OrderInfo;
+import net.spark.ui.view.orderedit.ProductInfoElement.ProductOrderData;
+import net.spark.ui.view.storefront.StorefrontViewElement;
 import com.vaadin.testbench.ElementQuery;
 
 public class AddOrderIT extends AbstractIT {

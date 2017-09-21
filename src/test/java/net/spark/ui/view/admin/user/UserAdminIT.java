@@ -1,11 +1,11 @@
-package net.jiniguru.roshan.ui.view.admin.user;
+package net.spark.ui.view.admin.user;
 
 import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import net.jiniguru.roshan.ui.view.admin.AbstractCrudIT;
+import net.spark.ui.view.admin.AbstractCrudIT;
 import com.vaadin.testbench.TestBenchElement;
 import com.vaadin.testbench.elements.ButtonElement;
 import com.vaadin.testbench.elements.NotificationElement;

@@ -11,8 +11,9 @@ import org.springframework.security.config.annotation.web.configurers.FormLoginC
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import net.jiniguru.roshan.app.Application;
-import net.jiniguru.roshan.backend.data.Role;
+import net.spark.app.Application;
+import net.spark.backend.data.Role;
+
 
 @EnableWebSecurity
 @Configuration

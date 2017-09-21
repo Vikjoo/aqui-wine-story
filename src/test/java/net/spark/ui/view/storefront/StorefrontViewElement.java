@@ -1,11 +1,11 @@
-package net.jiniguru.roshan.ui.view.storefront;
+package net.spark.ui.view.storefront;
 
-import net.jiniguru.roshan.ui.view.orderedit.OrderEditViewElement;
+import net.spark.ui.view.orderedit.OrderEditViewElement;
 import com.vaadin.testbench.ElementQuery;
 import com.vaadin.testbench.elements.GridElement;
 import com.vaadin.testbench.elementsbase.ServerClass;
 
-@ServerClass("net.jiniguru.roshan.ui.view.storefront.StorefrontView")
+@ServerClass("net.spark.ui.view.storefront.StorefrontView")
 public class StorefrontViewElement extends StorefrontViewDesignElement {
 
 	public OrderEditViewElement selectOrder(int index) {

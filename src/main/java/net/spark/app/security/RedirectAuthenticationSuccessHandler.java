@@ -13,7 +13,8 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.web.context.annotation.ApplicationScope;
 
 import com.vaadin.spring.annotation.SpringComponent;
-import net.jiniguru.roshan.app.Application;
+
+import net.spark.app.Application;
 
 /**
  * Redirects to the application after successful authentication.

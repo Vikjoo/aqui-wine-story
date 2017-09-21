@@ -4,9 +4,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import net.jiniguru.roshan.backend.data.entity.B2Customer;
-import net.jiniguru.roshan.backend.data.entity.Customer;
-import net.jiniguru.roshan.backend.data.entity.User;
+import net.spark.backend.data.entity.B2Customer;
+import net.spark.backend.data.entity.Customer;
+import net.spark.backend.data.entity.User;
 
 public interface B2CustomerRepository extends JpaRepository<B2Customer, Long> {
 	Page<B2Customer> findBy(Pageable pageable);

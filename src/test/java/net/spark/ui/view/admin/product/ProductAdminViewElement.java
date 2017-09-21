@@ -1,4 +1,4 @@
-package net.jiniguru.roshan.ui.view.admin.product;
+package net.spark.ui.view.admin.product;
 
 public class ProductAdminViewElement extends ProductAdminViewDesignElement implements CrudViewElement {
 

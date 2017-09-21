@@ -10,9 +10,9 @@ import com.vaadin.server.DefaultErrorHandler;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.spring.navigator.SpringViewProvider;
-import net.jiniguru.roshan.app.HasLogger;
-import net.jiniguru.roshan.ui.navigation.NavigationManager;
-import net.jiniguru.roshan.ui.view.AccessDeniedView;
+import net.spark.app.HasLogger;
+import net.spark.ui.navigation.NavigationManager;
+import net.spark.ui.view.AccessDeniedView;
 import com.vaadin.ui.UI;
 
 @Theme("apptheme")

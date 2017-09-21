@@ -1,10 +1,10 @@
-package net.jiniguru.roshan.ui.view.orderedit;
+package net.spark.ui.view.orderedit;
 
 import org.openqa.selenium.NoSuchElementException;
 
 import com.vaadin.testbench.elementsbase.ServerClass;
 
-@ServerClass("net.jiniguru.roshan.ui.view.orderedit.ProductInfo")
+@ServerClass("net.spark.ui.view.orderedit.ProductInfo")
 public class ProductInfoElement extends ProductInfoDesignElement {
 
 	public static class ProductOrderData {

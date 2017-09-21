@@ -9,12 +9,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import net.jiniguru.roshan.app.BeanLocator;
-import net.jiniguru.roshan.app.security.SecurityUtils;
-import net.jiniguru.roshan.backend.B2CustomerRepository;
-import net.jiniguru.roshan.backend.CustomerRepository;
-import net.jiniguru.roshan.backend.data.entity.B2Customer;
-import net.jiniguru.roshan.backend.data.entity.Customer;
+import net.spark.app.BeanLocator;
+import net.spark.app.security.SecurityUtils;
+import net.spark.backend.B2CustomerRepository;
+import net.spark.backend.CustomerRepository;
+import net.spark.backend.data.entity.B2Customer;
+import net.spark.backend.data.entity.Customer;
 
 @Service
 public class B2CustomerService implements CrudService<B2Customer> {

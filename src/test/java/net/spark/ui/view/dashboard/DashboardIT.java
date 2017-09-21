@@ -1,4 +1,4 @@
-package net.jiniguru.roshan.ui.view.dashboard;
+package net.spark.ui.view.dashboard;
 
 import java.time.Year;
 import java.time.YearMonth;
@@ -10,9 +10,9 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.WebElement;
 
-import net.jiniguru.roshan.AbstractIT;
-import net.jiniguru.roshan.ui.view.dashboard.DashboardViewElement.BoardBoxElement;
-import net.jiniguru.roshan.ui.view.dashboard.DashboardViewElement.ChartElement;
+import net.spark.AbstractIT;
+import net.spark.ui.view.dashboard.DashboardViewElement.BoardBoxElement;
+import net.spark.ui.view.dashboard.DashboardViewElement.ChartElement;
 import com.vaadin.testbench.By;
 
 public class DashboardIT extends AbstractIT {

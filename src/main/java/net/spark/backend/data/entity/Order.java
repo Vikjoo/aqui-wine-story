@@ -15,7 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.OrderColumn;
 import javax.validation.constraints.NotNull;
 
-import net.jiniguru.roshan.backend.data.OrderState;
+import net.spark.backend.data.OrderState;
 
 @Entity(name = "OrderInfo") // "Order" is a reserved word
 @NamedEntityGraphs({ @NamedEntityGraph(name = "Order.gridData", attributeNodes = { @NamedAttributeNode("customer") }),

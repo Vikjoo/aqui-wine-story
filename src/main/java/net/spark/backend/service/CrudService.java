@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 
-import net.jiniguru.roshan.backend.data.entity.AbstractEntity;
+import net.spark.backend.data.entity.AbstractEntity;
 
 public interface CrudService<T extends AbstractEntity> {
 

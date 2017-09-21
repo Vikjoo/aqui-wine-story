@@ -1,4 +1,4 @@
-package net.jiniguru.roshan.ui.view;
+package net.spark.ui.view;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

@@ -11,8 +11,8 @@ import org.springframework.data.jpa.repository.EntityGraph.EntityGraphType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import net.jiniguru.roshan.backend.data.OrderState;
-import net.jiniguru.roshan.backend.data.entity.Order;
+import net.spark.backend.data.OrderState;
+import net.spark.backend.data.entity.Order;
 
 public interface OrderRepository extends JpaRepository<Order, Long> {
 

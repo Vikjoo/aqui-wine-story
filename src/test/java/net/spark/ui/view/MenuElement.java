@@ -1,10 +1,10 @@
-package net.jiniguru.roshan.ui.view;
+package net.spark.ui.view;
 
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
-import net.jiniguru.roshan.AbstractIT;
-import net.jiniguru.roshan.ui.view.storefront.StorefrontViewElement;
+import net.spark.AbstractIT;
+import net.spark.ui.view.storefront.StorefrontViewElement;
 import com.vaadin.testbench.By;
 import com.vaadin.testbench.elements.AbstractComponentElement;
 

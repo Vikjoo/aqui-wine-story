@@ -7,9 +7,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import net.jiniguru.roshan.app.BeanLocator;
-import net.jiniguru.roshan.backend.PickupLocationRepository;
-import net.jiniguru.roshan.backend.data.entity.PickupLocation;
+import net.spark.app.BeanLocator;
+import net.spark.backend.PickupLocationRepository;
+import net.spark.backend.data.entity.PickupLocation;
 
 @Service
 public class PickupLocationService {

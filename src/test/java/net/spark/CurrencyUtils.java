@@ -1,4 +1,4 @@
-package net.jiniguru.roshan;
+package net.spark;
 
 import java.util.Currency;
 import java.util.Locale;

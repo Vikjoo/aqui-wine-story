@@ -1,9 +1,9 @@
-package net.jiniguru.roshan.ui.view.storefront;
+package net.spark.ui.view.storefront;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import net.jiniguru.roshan.AbstractIT;
+import net.spark.AbstractIT;
 import com.vaadin.testbench.elements.GridElement;
 
 public class StorefrontIT extends AbstractIT {

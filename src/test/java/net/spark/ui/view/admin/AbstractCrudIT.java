@@ -1,4 +1,4 @@
-package net.jiniguru.roshan.ui.view.admin;
+package net.spark.ui.view.admin;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,11 +10,11 @@ import com.vaadin.testbench.elements.NotificationElement;
 import org.junit.Assert;
 import org.junit.Test;
 
-import net.jiniguru.roshan.AbstractIT;
-import net.jiniguru.roshan.ui.components.ConfirmationDialogDesignElement;
-import net.jiniguru.roshan.ui.view.MenuElement;
-import net.jiniguru.roshan.ui.view.admin.product.CrudViewElement;
-import net.jiniguru.roshan.ui.view.storefront.StorefrontViewElement;
+import net.spark.AbstractIT;
+import net.spark.ui.components.ConfirmationDialogDesignElement;
+import net.spark.ui.view.MenuElement;
+import net.spark.ui.view.admin.product.CrudViewElement;
+import net.spark.ui.view.storefront.StorefrontViewElement;
 import com.vaadin.testbench.elements.GridElement;
 import com.vaadin.testbench.elements.GridElement.GridRowElement;
 import com.vaadin.testbench.elements.TextFieldElement;

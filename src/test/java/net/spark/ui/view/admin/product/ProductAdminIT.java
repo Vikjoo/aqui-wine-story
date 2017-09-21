@@ -1,8 +1,8 @@
-package net.jiniguru.roshan.ui.view.admin.product;
+package net.spark.ui.view.admin.product;
 
 import org.junit.Assert;
 
-import net.jiniguru.roshan.ui.view.admin.AbstractCrudIT;
+import net.spark.ui.view.admin.AbstractCrudIT;
 import com.vaadin.testbench.elements.TextFieldElement;
 
 public class ProductAdminIT extends AbstractCrudIT<ProductAdminViewElement> {

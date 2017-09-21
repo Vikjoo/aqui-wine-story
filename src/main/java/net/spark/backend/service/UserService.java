@@ -9,10 +9,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import net.jiniguru.roshan.app.BeanLocator;
-import net.jiniguru.roshan.app.security.SecurityUtils;
-import net.jiniguru.roshan.backend.UserRepository;
-import net.jiniguru.roshan.backend.data.entity.User;
+import net.spark.app.BeanLocator;
+import net.spark.app.security.SecurityUtils;
+import net.spark.backend.UserRepository;
+import net.spark.backend.data.entity.User;
 
 @Service
 public class UserService implements CrudService<User> {

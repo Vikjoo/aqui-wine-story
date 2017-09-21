@@ -1,9 +1,9 @@
-package net.jiniguru.roshan.ui.view;
+package net.spark.ui.view;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import net.jiniguru.roshan.AbstractIT;
+import net.spark.AbstractIT;
 
 public class MenuIT extends AbstractIT {
 

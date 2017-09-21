@@ -3,7 +3,7 @@ package net.spark.backend.data;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import net.jiniguru.roshan.backend.data.entity.Product;
+import net.spark.backend.data.entity.Product;
 
 public class DashboardData {
 

@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:true,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;apptheme&quot;}">
+  <meta name="vaadin-version" content="8.0.5">
+  <meta name="package-mapping" content="com_vaadin_template_customers_ui_view_customer:net.spark.ui.view.customer">
+  <meta name="package-mapping" content="com_vaadin:com.vaadin">
+ </head>
+ <body>
+  <vaadin-vertical-layout style-name="crud-template" spacing="false" responsive size-full margin="false">
+   <vaadin-horizontal-layout style-name="top-bar" spacing="false" width-full height="50px">
+    <vaadin-horizontal-layout spacing="false" width-full :middle :expand>
+     <vaadin-text-field icon="fonticon://FontAwesome/f002" style-name="small inline-icon search" id="search" placeholder="Search" width-full _id="search"></vaadin-text-field>
+    </vaadin-horizontal-layout>
+    <vaadin-button icon="fonticon://FontAwesome/f067" style-name="borderless" id="add" plain-text _id="add" :middle :right>
+      Add new 
+    </vaadin-button>
+   </vaadin-horizontal-layout>
+   <vaadin-css-layout style-name="content" size-full :expand>
+    <vaadin-css-layout style-name="list" size-full>
+     <vaadin-grid id="list" size-full data-item-type="net.spark.backend.data.entity.B2Customer" _id="list">
+      <table>
+       <colgroup>
+        <col column-id="tom" sortable>
+        <col column-id="company" sortable>
+        <col column-id="billAddress" sortable>
+        <col column-id="deliveryAddress" sortable>
+        <col column-id="mobileNumber" sortable>
+        <col column-id="coursedFollowed" sortable>
+        <col column-id="note" sortable>
+        <col column-id="status" sortable>
+        <col column-id="phoneNumber" sortable>
+        <col column-id="details" sortable>
+        <col column-id="locked" sortable>
+        <col column-id="email" sortable>
+        <col column-id="firstName" sortable>
+        <col column-id="lastName" sortable>
+        <col column-id="workNumber" sortable>
+       </colgroup>
+       <thead>
+        <tr default>
+         <th plain-text column-ids="tom">Tom</th>
+         <th plain-text column-ids="company">Company</th>
+         <th plain-text column-ids="billAddress">BillAddress</th>
+         <th plain-text column-ids="deliveryAddress">DeliveryAddress</th>
+         <th plain-text column-ids="mobileNumber">MobileNumber</th>
+         <th plain-text column-ids="coursedFollowed">CoursedFollowed</th>
+         <th plain-text column-ids="note">Note</th>
+         <th plain-text column-ids="status">Status</th>
+         <th plain-text column-ids="phoneNumber">PhoneNumber</th>
+         <th plain-text column-ids="details">Details</th>
+         <th plain-text column-ids="locked">Locked</th>
+         <th plain-text column-ids="email">Email</th>
+         <th plain-text column-ids="firstName">FirstName</th>
+         <th plain-text column-ids="lastName">LastName</th>
+         <th plain-text column-ids="workNumber">WorkNumber</th>
+        </tr>
+       </thead>
+       <tbody></tbody>
+      </table>
+     </vaadin-grid>
+    </vaadin-css-layout>
+    <vaadin-vertical-layout enabled="false" style-name="inspect" spacing="false" id="form" size-full margin="false" _id="form">
+     <vaadin-css-layout style-name="edit" size-full :expand>
+      <vaadin-css-layout style-name="section half" width-full>
+       <vaadin-text-field caption="Client Code" style-name="small" id="id" width-full height="31px" readonly _id="id"></vaadin-text-field>
+      </vaadin-css-layout>
+      <vaadin-css-layout style-name="section half" width-full>
+       <vaadin-text-field caption="Company" style-name="small" id="company" width-full _id="company"></vaadin-text-field>
+      </vaadin-css-layout>
+      <vaadin-css-layout style-name="section half" width-full>
+       <vaadin-date-field caption="Enrolment Date" id="enrollmentDate" style-name="small" width-full _id="enrollmentDate"></vaadin-date-field>
+      </vaadin-css-layout>
+      <vaadin-css-layout style-name="section half" width-full>
+       <vaadin-label plain-text>
+         Contact 
+       </vaadin-label>
+       <vaadin-vertical-layout size-auto>
+        <vaadin-text-field caption="First Name" style-name="small" id="firstName" width-full _id="firstName"></vaadin-text-field>
+        <vaadin-text-field caption="Last Name" style-name="small" id="lastName" width-full _id="lastName"></vaadin-text-field>
+        <vaadin-text-field caption="Mobile Number" style-name="small" id="mobileNumber" width-full _id="mobileNumber"></vaadin-text-field>
+        <vaadin-text-field caption="Email" style-name="small" id="email" width-full _id="email"></vaadin-text-field>
+       </vaadin-vertical-layout>
+      </vaadin-css-layout>
+      <vaadin-css-layout style-name="section half" width-full>
+       <vaadin-text-area caption="Billing Address" style-name="small" id="billAddress" width-full _id="billAddress"></vaadin-text-area>
+      </vaadin-css-layout>
+      <vaadin-css-layout style-name="section half" width-full>
+       <vaadin-text-area caption="Delivery address" style-name="small" id="deliveryAddress" width-full _id="deliveryAddress"></vaadin-text-area>
+      </vaadin-css-layout>
+      <vaadin-css-layout style-name="section half" width-full>
+       <vaadin-text-field caption="Work Number" style-name="small" id="workNumber" width-full _id="workNumber"></vaadin-text-field>
+      </vaadin-css-layout>
+      <vaadin-css-layout style-name="section half" width-full>
+       <vaadin-text-field caption="VAT Number" style-name="small" id="vatNumber" width-full _id="vatNumber"></vaadin-text-field>
+      </vaadin-css-layout>
+      <vaadin-css-layout style-name="section half" width-full>
+       <vaadin-text-field caption="BRN" style-name="small" id="brnNumber" width-full _id="brnNumber"></vaadin-text-field>
+      </vaadin-css-layout>
+      <vaadin-css-layout style-name="section half" width-full>
+       <vaadin-combo-box caption="Payment Agreement" style-name="small" id="paymentAgreement" width-full data-item-type="java.lang.String" _id="paymentAgreement">
+        <option item="Cash">Cash</option>
+        <option item="J15">J+15</option>
+        <option item="J30">J+30</option>
+       </vaadin-combo-box>
+      </vaadin-css-layout>
+      <vaadin-css-layout style-name="section half" width-full>
+       <vaadin-text-field caption="Coursed followed" style-name="small" id="coursedFollowed" width-full _id="coursedFollowed"></vaadin-text-field>
+      </vaadin-css-layout>
+      <vaadin-css-layout style-name="section half" width-full>
+       <vaadin-text-area caption="Notes" style-name="small" id="note" width-full _id="note"></vaadin-text-area>
+      </vaadin-css-layout>
+      <vaadin-css-layout style-name="section half" width-full>
+       <vaadin-combo-box caption="Status" style-name="small" id="status" width-full data-item-type="java.lang.String" _id="status">
+        <option item="active">Active</option>
+        <option item="pending">Pending</option>
+        <option item="disable">Disable</option>
+       </vaadin-combo-box>
+      </vaadin-css-layout>
+      <vaadin-css-layout style-name="section half" width-full></vaadin-css-layout>
+      <vaadin-css-layout style-name="section half" width-full></vaadin-css-layout>
+      <vaadin-css-layout style-name="section half" width-full></vaadin-css-layout>
+     </vaadin-css-layout>
+     <vaadin-css-layout style-name="section half" width-full></vaadin-css-layout>
+    </vaadin-vertical-layout>
+   </vaadin-css-layout>
+   <vaadin-horizontal-layout style-name="buttons border-top" width-full height="50px">
+    <vaadin-button style-name="small primary" id="update" plain-text _id="update" :middle>
+      Update 
+    </vaadin-button>
+    <vaadin-button style-name="small" id="cancel" plain-text _id="cancel" :middle :center>
+      Cancel 
+    </vaadin-button>
+    <vaadin-button style-name="small" id="print" plain-text _id="print">
+      Print 
+    </vaadin-button>
+    <vaadin-button style-name="small danger" id="delete" plain-text _id="delete" :middle :right :expand>
+      Delete 
+    </vaadin-button>
+   </vaadin-horizontal-layout>
+  </vaadin-vertical-layout>
+ </body>
+</html>

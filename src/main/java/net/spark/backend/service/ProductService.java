@@ -6,9 +6,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import net.jiniguru.roshan.app.BeanLocator;
-import net.jiniguru.roshan.backend.ProductRepository;
-import net.jiniguru.roshan.backend.data.entity.Product;
+import net.spark.app.BeanLocator;
+import net.spark.backend.ProductRepository;
+import net.spark.backend.data.entity.Product;
 
 @Service
 public class ProductService implements CrudService<Product> {
