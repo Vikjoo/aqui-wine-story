@@ -1,6 +1,10 @@
 package net.jiniguru.roshan.backend.data.entity;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
@@ -10,6 +14,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.persistence.JoinColumn;
 /**
  * 
  * 
@@ -35,6 +40,11 @@ public class Product extends AbstractEntity {
 	@OneToOne
 	private ProductWine productWine;
 	
+	@ElementCollection
+	@CollectionTable(name= "PRODUCT_DETAILS", joinColumns=@JoinColumn(name="id"))
+	private
+	List<AdditionalDetail> productDetails;
+	
 	public String getName() {
 		return name;
 	}
@@ -57,6 +67,14 @@ public class Product extends AbstractEntity {
 
 	public void setProductWine(ProductWine productWine) {
 		this.productWine = productWine;
+	}
+
+	public List<AdditionalDetail> getProductDetails() {
+		return productDetails;
+	}
+
+	public void setProductDetails(List<AdditionalDetail> productDetails) {
+		this.productDetails = productDetails;
 	}
 
 }

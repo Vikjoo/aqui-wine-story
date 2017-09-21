@@ -29,6 +29,7 @@ import net.jiniguru.roshan.backend.ProductWineRepository;
 import net.jiniguru.roshan.backend.UserRepository;
 import net.jiniguru.roshan.backend.data.OrderState;
 import net.jiniguru.roshan.backend.data.Role;
+import net.jiniguru.roshan.backend.data.entity.AdditionalDetail;
 import net.jiniguru.roshan.backend.data.entity.Children;
 import net.jiniguru.roshan.backend.data.entity.Customer;
 import net.jiniguru.roshan.backend.data.entity.HistoryItem;
@@ -38,6 +39,7 @@ import net.jiniguru.roshan.backend.data.entity.PickupLocation;
 import net.jiniguru.roshan.backend.data.entity.Product;
 import net.jiniguru.roshan.backend.data.entity.ProductWine;
 import net.jiniguru.roshan.backend.data.entity.User;
+import net.jiniguru.roshan.backend.util.WineSheetTemplate;
 
 @SpringComponent
 public class DataGenerator implements HasLogger {
@@ -404,7 +406,7 @@ public class DataGenerator implements HasLogger {
 			// Create a slightly upwards trend - everybody wants to be
 			// successful
 			int relativeYear = dueDate.getYear() - now.getYear() + yearsToInclude;
-			int relativeMonth = relativeYear * 12 + dueDate.getMonthValue();
+			int relativeMonth = relativeYear * 1 + dueDate.getMonthValue(); // multiplier for month set to 1
 			double multiplier = 1.0 + 0.03 * relativeMonth;
 			int ordersThisDay = (int) (random.nextInt(10) + 1 * multiplier);
 			for (int i = 0; i < ordersThisDay; i++) {
@@ -594,6 +596,17 @@ public class DataGenerator implements HasLogger {
 	private void createProducts(ProductRepository productsRepo, ProductWineRepository proWineRepo) {
 		for (int i = 0; i < 10; i++) {
 			Product product = new Product();
+			List<AdditionalDetail> productDetails = new ArrayList<>();
+			int j = 0 ;
+			for (String field : WineSheetTemplate.WINE) {
+				AdditionalDetail e = new AdditionalDetail();
+				e.setName(field);
+				e.setValue(WineSheetTemplate.WINE_VALUE[j]);
+				productDetails.add(e);
+				j++;
+			}
+			
+			product.setProductDetails(productDetails);
 			product.setName(getRandomProductName());
 			double doublePrice = 2.0 + random.nextDouble() * 100.0;
 			product.setPrice((int) (doublePrice * 100.0));

@@ -23,6 +23,7 @@ import com.vaadin.ui.declarative.Design;
 public class ProductAdminViewDesign extends VerticalLayout {
 	protected TextField search;
 	protected Button add;
+	protected Button storage;
 	protected CssLayout listParent;
 	protected Grid<net.jiniguru.roshan.backend.data.entity.Product> list;
 	protected VerticalLayout form;

@@ -25,12 +25,12 @@ import com.vaadin.ui.TextField;
 @Entity
 public class Customer extends AbstractEntity {
 
-	@NotNull
-	@NotEmpty
+	//@NotNull
+	//@NotEmpty
 	@Size(max = 255)
 	private String email;
-	@NotNull
-	@NotEmpty
+	//@NotNull
+	//@NotEmpty
 	@Size(max = 255)
 	private String firstName;
 	@NotNull

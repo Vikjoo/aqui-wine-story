@@ -115,7 +115,7 @@ public abstract class AbstractCrudView<T extends AbstractEntity> implements Seri
 		getCancel().addClickListener(event -> getPresenter().cancelClicked());
 		getDelete().addClickListener(event -> getPresenter().deleteClicked());
 		getAdd().addClickListener(event -> getPresenter().addNewClicked());
-
+		
 		// Search functionality
 		getSearch().addValueChangeListener(event -> getPresenter().filterGrid(event.getValue()));
 
@@ -150,7 +150,7 @@ public abstract class AbstractCrudView<T extends AbstractEntity> implements Seri
 	protected abstract Component getForm();
 
 	protected abstract Button getAdd();
-
+	
 	protected abstract Button getCancel();
 
 	protected abstract Button getDelete();

@@ -44,6 +44,8 @@ public class ProductAdminView extends AbstractCrudView<Product> {
 		getGrid().removeColumn(PRICE_PROPERTY);
 		getGrid().addColumn(product -> priceToStringConverter.convertToPresentation(product.getPrice(),
 				new ValueContext(getGrid()))).setSortProperty(PRICE_PROPERTY);
+		getViewComponent().storage.addClickListener(listener->presenter.storageClick());
+		
 	}
 
 	@Override
