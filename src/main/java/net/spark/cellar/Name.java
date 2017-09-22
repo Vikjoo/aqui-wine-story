@@ -6,7 +6,7 @@ public final class Name
 extends BaseItem {
     static final Name empty = new Name("0000");
 
-    protected Name() {
+    public Name() {
     }
 
     protected Name(String sysId) {

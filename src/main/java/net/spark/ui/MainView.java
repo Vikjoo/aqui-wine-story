@@ -13,6 +13,8 @@ import com.vaadin.navigator.ViewDisplay;
 import com.vaadin.navigator.ViewLeaveAction;
 import com.vaadin.spring.annotation.SpringViewDisplay;
 import com.vaadin.spring.annotation.UIScope;
+
+import net.spark.cellar.ui.view.WineAdminView;
 import net.spark.ui.navigation.NavigationManager;
 import net.spark.ui.view.admin.product.ProductAdminView;
 import net.spark.ui.view.admin.user.UserAdminView;
@@ -53,7 +55,7 @@ public class MainView extends MainViewDesign implements ViewDisplay {
 		attachNavigation(bcustomers, B2CustomerView.class);
 		attachNavigation(users, UserAdminView.class);
 		attachNavigation(products, ProductAdminView.class);
-
+		attachNavigation(inventory, WineAdminView.class);
 		logout.addClickListener(e -> logout());
 	}
 

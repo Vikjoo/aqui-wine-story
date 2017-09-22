@@ -27,6 +27,7 @@ import net.spark.backend.PickupLocationRepository;
 import net.spark.backend.ProductRepository;
 import net.spark.backend.ProductWineRepository;
 import net.spark.backend.UserRepository;
+import net.spark.backend.WineRepository;
 import net.spark.backend.data.OrderState;
 import net.spark.backend.data.Role;
 import net.spark.backend.data.entity.AdditionalDetail;
@@ -40,6 +41,9 @@ import net.spark.backend.data.entity.Product;
 import net.spark.backend.data.entity.ProductWine;
 import net.spark.backend.data.entity.User;
 import net.spark.backend.util.WineSheetTemplate;
+import net.spark.cellar.Name;
+import net.spark.cellar.TypeOfWine;
+import net.spark.cellar.Wine;
 
 @SpringComponent
 public class DataGenerator implements HasLogger {
@@ -120,7 +124,7 @@ public class DataGenerator implements HasLogger {
 	@Bean
 	public CommandLineRunner loadData(OrderRepository orders, UserRepository users, ProductRepository products,
 			CustomerRepository customers, PickupLocationRepository pickupLocations, PasswordEncoder passwordEncoder,
-			ProductWineRepository proWineRepo) {
+			ProductWineRepository proWineRepo, WineRepository wineRepository) {
 		return args -> {
 			if (users.count() != 0L) {
 				getLogger().info("Using existing database");
@@ -140,7 +144,7 @@ public class DataGenerator implements HasLogger {
 			createPickupLocations(pickupLocations);
 			getLogger().info("... generating orders");
 			createOrders(orders);
-
+			createWine(wineRepository);
 			getLogger().info("Generated demo data");
 		};
 	}
@@ -414,6 +418,15 @@ public class DataGenerator implements HasLogger {
 			
 			products.add(productsRepo.save(product));
 		}
+	}
+	private void createWine (WineRepository wineRepository) {
+		Wine wine = new Wine ();
+		wine.setImage(new net.spark.cellar.Image());
+		//wine.setAppellation(new Name());
+		wine.setYear(2006);
+		//wine.setCepage(TypeOfWine.getEmpty());
+		wineRepository.save(wine);
+		
 	}
 
 	private String getRandomProductName() {

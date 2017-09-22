@@ -15,12 +15,13 @@ import net.spark.backend.OrderRepository;
 import net.spark.backend.data.entity.Order;
 import net.spark.backend.service.UserService;
 import net.spark.backend.util.LocalDateJpaConverter;
+import net.spark.cellar.Wine;
 import net.spark.ui.AppUI;
 
 @SpringBootApplication(scanBasePackageClasses = { AppUI.class, Application.class, UserService.class,
 		SecurityConfig.class })
 @EnableJpaRepositories(basePackageClasses = { OrderRepository.class })
-@EntityScan(basePackageClasses = { Order.class, LocalDateJpaConverter.class })
+@EntityScan(basePackageClasses = { Order.class, LocalDateJpaConverter.class ,Wine.class})
 @EnableEventBus
 public class Application extends SpringBootServletInitializer {
 

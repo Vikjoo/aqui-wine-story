@@ -5,7 +5,7 @@ package net.spark.cellar;
 public class BaseItem
 extends CellarObject {
     static final int LENGTH = 51;
-    private String m_name = "";
+    private String name = null;
 
     protected BaseItem() {
     }
@@ -20,7 +20,7 @@ extends CellarObject {
 
 
     public final String getName() {
-        return this.m_name;
+        return this.name;
     }
 
     public final void setName(String s) {
@@ -28,7 +28,7 @@ extends CellarObject {
     }
 
     public final String toString() {
-        return this.m_name.trim();
+        return this.name.trim();
     }
 
     public boolean isEmpty() {

@@ -1820,6 +1820,144 @@ div.v-layout.v-horizontal.v-widget {
 	padding-top: 37px;
 }
 
+.apptheme .form-template {
+	overflow-x: hidden;
+	overflow-y: scroll;
+	padding: 18.5px;
+	min-width: 320px;
+}
+
+.apptheme .form-template .title {
+	font-size: 19.2px;
+	font-weight: 600;
+	padding-bottom: 18.5px;
+}
+
+.apptheme .form-template .v-caption-form-section {
+	text-transform: uppercase;
+	font-size: 12.8px;
+	color: #797979;
+	font-weight: 600;
+	padding-bottom: 0;
+	width: 100%;
+}
+
+.apptheme .form-template .input-wrapper {
+	padding: 9.25px;
+	line-height: 37px;
+}
+
+.apptheme .form-template .input-group {
+	width: 100%;
+}
+
+.apptheme .form-template .text-wrapper {
+	padding: 18.5px;
+	background: white;
+}
+
+.apptheme .form-template .form-section {
+	padding: 9.25px 0 37px;
+	width: 100%;
+	border-top: 1px solid #c5c5c5;
+}
+
+.apptheme .form-template .input-wrapper .v-caption {
+	display: block;
+}
+
+.apptheme .form-template .v-button.borderless {
+	color: #4b4b65;
+}
+
+.apptheme .form-template .input-wrapper .v-widget + .v-widget {
+	margin-left: 18.5px;
+}
+
+.apptheme .form-template .align-bottom {
+	vertical-align: bottom;
+}
+
+.apptheme .form-template .border {
+	border: 1px solid #dfdfdf;
+	margin: 9.25px 0;
+}
+
+.apptheme .form-template[width-range~="-550px"] .input-wrapper {
+	width: 100%;
+}
+
+.apptheme .form-template[width-range~="551px-"] .caption-left .input-wrapper .v-caption {
+	display: inline-block;
+	height: 37px;
+	line-height: 37px;
+	padding-right: 6.16667px;
+	padding-bottom: 0;
+	vertical-align: top;
+}
+
+.apptheme .form-template[width-range~="551px-"] .caption-left .input-wrapper .v-caption.v-caption-tiny {
+	height: 28px;
+	line-height: 28px;
+}
+
+.apptheme .form-template[width-range~="551px-"] .caption-left .input-wrapper .v-caption.v-caption-small {
+	height: 31px;
+	line-height: 31px;
+}
+
+.apptheme .form-template[width-range~="551px-"] .caption-left .input-wrapper .v-caption.v-caption-large {
+	height: 44px;
+	line-height: 44px;
+}
+
+.apptheme .form-template[width-range~="551px-"] .caption-left .input-wrapper .v-caption.v-caption-huge {
+	height: 59px;
+	line-height: 59px;
+}
+
+.apptheme .form-template[width-range~="551-750px"] .input-wrapper {
+	width: 50%;
+}
+
+.apptheme .form-template[width-range~="551-750px"] .caption-left .input-wrapper {
+	width: 100%;
+}
+
+.apptheme .form-template[width-range~="551-750px"] .caption-left .input-wrapper  > .v-widget {
+	width: 65% !important;
+	float: right;
+}
+
+.apptheme .form-template[width-range~="551-750px"] .caption-left .input-wrapper  > .v-caption {
+	text-align: right;
+	width: 35%;
+	box-sizing: border-box;
+}
+
+.apptheme .form-template[width-range~="-750px"] .title, .apptheme .form-template[width-range~="-750px"] .v-caption-form-section {
+	text-align: center;
+}
+
+.apptheme .form-template[width-range~="-750px"] .input-wrapper .v-datefield, .apptheme .form-template[width-range~="-750px"] .v-textfield, .apptheme .form-template[width-range~="-750px"] .v-filterselect, .apptheme .form-template[width-range~="-750px"] .v-textarea {
+	width: 100%;
+}
+
+.apptheme .form-template[width-range~="-750px"] .input-wrapper .v-widget + .v-widget {
+	margin-left: 0;
+	margin-top: 9.25px;
+}
+
+.apptheme .form-template[width-range~="-750px"] .input-group {
+	margin-bottom: 18.5px;
+}
+
+.apptheme .form-template[width-range~="-750px"] .v-captiontext {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	width: 100%;
+}
+
 .apptheme .crud-template .top-bar {
 	background: white;
 	color: #4b4b65;

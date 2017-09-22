@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @MappedSuperclass
 public class AbstractEntity implements Serializable {
 
@@ -17,6 +19,7 @@ public class AbstractEntity implements Serializable {
 	@Version
 	private int version;
 
+	
 	public boolean isNew() {
 		return id == null;
 	}

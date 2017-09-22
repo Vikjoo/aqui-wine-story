@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;apptheme&quot;}">
+  <meta name="vaadin-version" content="8.0.5">
+ </head>
+ <body>
+  <vaadin-vertical-layout style-name="crud-template" spacing="false" responsive size-full margin="false">
+   <vaadin-horizontal-layout style-name="top-bar" spacing="false" width-full height="50px">
+    <vaadin-horizontal-layout spacing="false" width-full :middle :expand>
+     <vaadin-text-field icon="fonticon://FontAwesome/f002" style-name="small inline-icon search" id="search" placeholder="Search" width-full _id="search"></vaadin-text-field>
+    </vaadin-horizontal-layout>
+    <vaadin-button icon="fonticon://FontAwesome/f067" style-name="borderless" id="storage" plain-text _id="storage" :middle :right>
+      Storage 
+    </vaadin-button>
+    <vaadin-button icon="fonticon://FontAwesome/f067" style-name="borderless" id="add" plain-text _id="add" :middle :right>
+      Add new 
+    </vaadin-button>
+   </vaadin-horizontal-layout>
+   <vaadin-css-layout style-name="content" size-full :expand>
+    <vaadin-css-layout style-name="list" id="listParent" size-full _id="listParent">
+     <vaadin-grid id="list" size-full data-item-type="net.spark.cellar.Wine" _id="list">
+      <table>
+       <colgroup>
+        <col column-id="type" sortable>
+        <col column-id="food" sortable>
+        <col column-id="length" sortable>
+        <col column-id="color" sortable>
+        <col column-id="name" sortable>
+        <col column-id="comment" sortable>
+        <col column-id="manualManagment" sortable>
+        <col column-id="bottles" sortable>
+        <col column-id="reference" sortable>
+        <col column-id="temperature" sortable>
+        <col column-id="year" sortable>
+        <col column-id="generalNote" sortable>
+        <col column-id="buyPrice" sortable>
+        <col column-id="evaluatePrice" sortable>
+        <col column-id="degree" sortable>
+        <col column-id="consumeMin" sortable>
+        <col column-id="consumeMax" sortable>
+        <col column-id="bestMin" sortable>
+        <col column-id="bestMax" sortable>
+        <col column-id="creationTime" sortable>
+        <col column-id="lastUpdate" sortable>
+        <col column-id="owner" sortable>
+        <col column-id="image" sortable>
+        <col column-id="category" sortable>
+        <col column-id="area" sortable>
+        <col column-id="classification" sortable>
+        <col column-id="bottleType" sortable>
+        <col column-id="cepage" sortable>
+        <col column-id="appellation" sortable>
+        <col column-id="country" sortable>
+        <col column-id="cuvee" sortable>
+        <col column-id="totalPurchases" sortable>
+        <col column-id="totalEvaluate" sortable>
+        <col column-id="allRackItems" sortable>
+       </colgroup>
+       <thead>
+        <tr default>
+         <th plain-text column-ids="type">Type</th>
+         <th plain-text column-ids="food">Food</th>
+         <th plain-text column-ids="length">Length</th>
+         <th plain-text column-ids="color">Color</th>
+         <th plain-text column-ids="name">Name</th>
+         <th plain-text column-ids="comment">Comment</th>
+         <th plain-text column-ids="manualManagment">ManualManagment</th>
+         <th plain-text column-ids="bottles">Bottles</th>
+         <th plain-text column-ids="reference">Reference</th>
+         <th plain-text column-ids="temperature">Temperature</th>
+         <th plain-text column-ids="year">Year</th>
+         <th plain-text column-ids="generalNote">GeneralNote</th>
+         <th plain-text column-ids="buyPrice">BuyPrice</th>
+         <th plain-text column-ids="evaluatePrice">EvaluatePrice</th>
+         <th plain-text column-ids="degree">Degree</th>
+         <th plain-text column-ids="consumeMin">ConsumeMin</th>
+         <th plain-text column-ids="consumeMax">ConsumeMax</th>
+         <th plain-text column-ids="bestMin">BestMin</th>
+         <th plain-text column-ids="bestMax">BestMax</th>
+         <th plain-text column-ids="creationTime">CreationTime</th>
+         <th plain-text column-ids="lastUpdate">LastUpdate</th>
+         <th plain-text column-ids="owner">Owner</th>
+         <th plain-text column-ids="image">Image</th>
+         <th plain-text column-ids="category">Category</th>
+         <th plain-text column-ids="area">Area</th>
+         <th plain-text column-ids="classification">Classification</th>
+         <th plain-text column-ids="bottleType">BottleType</th>
+         <th plain-text column-ids="cepage">Cepage</th>
+         <th plain-text column-ids="appellation">Appellation</th>
+         <th plain-text column-ids="country">Country</th>
+         <th plain-text column-ids="cuvee">Cuvee</th>
+         <th plain-text column-ids="totalPurchases">TotalPurchases</th>
+         <th plain-text column-ids="totalEvaluate">TotalEvaluate</th>
+         <th plain-text column-ids="allRackItems">AllRackItems</th>
+        </tr>
+       </thead>
+       <tbody></tbody>
+      </table>
+     </vaadin-grid>
+    </vaadin-css-layout>
+    <vaadin-vertical-layout enabled="false" style-name="inspect" spacing="false" id="form" size-full margin="false" _id="form">
+     <vaadin-css-layout style-name="edit" size-full :expand>
+      <vaadin-css-layout style-name="section half" width-full>
+       <vaadin-text-field caption="Name" style-name="small" id="name" width-full _id="name"></vaadin-text-field>
+      </vaadin-css-layout>
+      <vaadin-css-layout style-name="section half" width-full>
+       <vaadin-text-field caption="Price" style-name="small" id="price" width-full _id="price"></vaadin-text-field>
+      </vaadin-css-layout>
+      <vaadin-text-field caption="Wine" style-name="small" id="typeOfWine" width-full _id="typeOfWine"></vaadin-text-field>
+     </vaadin-css-layout>
+     <vaadin-horizontal-layout style-name="buttons border-top" width-full height="50px">
+      <vaadin-button style-name="small primary" id="update" plain-text _id="update" :middle>
+        Update 
+      </vaadin-button>
+      <vaadin-button style-name="small" id="cancel" plain-text _id="cancel" :middle :center>
+        Cancel 
+      </vaadin-button>
+      <vaadin-button style-name="small danger" id="delete" plain-text _id="delete" :middle :right :expand>
+        Delete 
+      </vaadin-button>
+     </vaadin-horizontal-layout>
+    </vaadin-vertical-layout>
+   </vaadin-css-layout>
+  </vaadin-vertical-layout>
+ </body>
+</html>

@@ -1,10 +1,20 @@
 package net.spark.cellar;
 
-public class Image {
+import javax.persistence.Entity;
 
-	public String getSystemUid() {
-		// TODO Auto-generated method stub
-		return null;
+@Entity
+public class Image extends CellarObject{
+
+	private String uri;
+
+
+	public String getUri() {
+		return uri;
 	}
+
+	public void setUri(String uri) {
+		this.uri = uri;
+	}
+
 
 }

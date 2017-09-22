@@ -1,6 +1,4 @@
-/*
- * Decompiled with CFR 0_122.
- */
+
 package net.spark.cellar;
 
 

@@ -1,523 +1,439 @@
 
 package net.spark.cellar;
 
-import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
-public final class Wine
-extends CellarObject {
-    private FoodType m_food;
-    static final int LENGTH = 358;
-    private ColorType m_color = ColorType.Red;
-    private String m_name = "";
-    private String m_comment = "";
-    private boolean m_manualManagment = false;
-    private int m_bottles = 0;
-    private String m_ref = "";
-    private int m_temperature = 0;
-    private int m_year = 0;
-    private int m_generalNote = 0;
-    private float m_buyPrice = 0.0f;
-    private float m_evaluatePrice = 0.0f;
-    private float m_degree = 0.0f;
-    private int m_consumeMin = 0;
-    private int m_consumeMax = 0;
-    private int m_bestMin = 0;
-    private int m_bestMax = 0;
-    private Date m_creationTime = new Date();
-    private Date m_updateTime = new Date();
-    private String m_ownerId = "0000";
-    private String m_imageId = "0000";
-    private String m_categoryId = "0000";
-    private String m_areaId = "0000";
-    private String m_classificationId = "0000";
-    private String m_bottleTypeId = "0000";
-    private String m_cepageId = "0000";
-    private String m_appellationId = "0000";
-    private String m_countryId = "0000";
-  //  private CellarObjectCollection m_assemblies = null;
+@Entity
+public final class Wine extends CellarObject {
+
 	
-    private RackItemCollection m_rackItems = null;
- 
-  //  private CellarObjectCollection m_purchases = null;
+	@Transient
+	private FoodType food;
+	static final int LENGTH = 358;
+	private ColorType color = ColorType.Red;
+	private String name = "";
+	private String comment = "";
+	private boolean manualManagment = false;
+	private int bottles = 0;
+	private String ref = "";
+	private int temperature = 0;
+	private int year = 0;
+	private int generalNote = 0;
+	private float buyPrice = 0.0f;
+	private float evaluatePrice = 0.0f;
+	private float degree = 0.0f;
+	private int consumeMin = 0;
+	private int consumeMax = 0;
+	private int bestMin = 0;
+	private int bestMax = 0;
+	private Date creationTime = new Date();
+	private Date updateTime = new Date();
+	@OneToOne(cascade=CascadeType.ALL)
+	private Image image = null;
+	// private CellarObjectCollection m_assemblies = null;
+	@Transient
+	private RackItemCollection m_rackItems = null;
 
- //   private CellarObjectCollection m_notes = null;
+	// private CellarObjectCollection m_purchases = null;
 
-    private Cuvee m_internalCuvee = null;
-    static final byte RESERVED = 1;
-    private HashMap m_prop = new HashMap(26);
-	private Category m_category;
-	private Area m_area;
-	private Classification m_class;
-	private Classification m_classification;
-	private BottleType m_bottleType;
-	private TypeOfWine m_typeOfWine;
-	private Name m_appellation;
-	private Country m_country;
-	private Owner m_owner;
+	// private CellarObjectCollection m_notes = null;
 
-    protected Wine() {
-        this.m_food = new FoodType(this);
-    }
+	private Cuvee internalCuvee = null;
+	static final byte RESERVED = 1;
+	private HashMap m_prop = new HashMap(26);
+	private Category category;
+	private Area area;
 
-    public final ObjectType getType() {
-        return ObjectType.Wine;
-    }
+	private Classification classification;
+	private BottleType bottleType;
+	private TypeOfWine typeOfWine;
+	private Name appellation;
+	private Country country;
+	private Owner owner;
 
-    public final FoodType getFood() {
-        return this.m_food;
-    }
+	public Wine() {
+		//this.food = new FoodType(this);
+	}
 
-    public final int getLength() {
-        return  358;
-    }
+	public final ObjectType getType() {
+		return ObjectType.Wine;
+	}
 
-    public final ColorType getColor() {
-        return this.m_color;
-    }
+	public final FoodType getFood() {
+		return this.food;
+	}
 
-    public final void setColor(ColorType ct) {
-        if (this.m_color != ct) {
-            this.m_color = ct;
-      
-        }
-    }
+	public final int getLength() {
+		return 358;
+	}
 
-    public final String getName() {
-        return this.m_name;
-    }
+	public final ColorType getColor() {
+		return this.color;
+	}
 
-    public final void setName(String s) {
-    	this.m_name =s;
-    }
+	public final void setColor(ColorType ct) {
 
-    public final String getComment() {
-        return this.m_comment;
-    }
+			this.color = ct;
 
-    public final void setComment(String s) {
-    	this.m_comment = s;
+	}
 
-    }
+	public final String getName() {
+		return this.name;
+	}
 
-    public final boolean isManualManagment() {
-        return this.m_manualManagment;
-    }
+	public final void setName(String s) {
+		this.name = s;
+	}
 
-    public final void setManualManagment(boolean b) {
-      this.m_manualManagment =b;
-    }
+	public final String getComment() {
+		return this.comment;
+	}
 
-    public final int getBottles() {
-        return this.m_bottles;
-    }
+	public final void setComment(String s) {
+		this.comment = s;
 
-    public final void setBottles(int v) {
-        if (v > 0 && v < 65536 && v != this.m_bottles) {
-            this.m_bottles = v;
+	}
 
-        }
-    }
+	public final boolean isManualManagment() {
+		return this.manualManagment;
+	}
 
-    public final String getReference() {
-        return this.m_ref;
-    }
+	public final void setManualManagment(boolean b) {
+		this.manualManagment = b;
+	}
 
-    public final void setReference(String s) {
-        if (!this.m_ref.equals(s)) {
-            this.m_ref = s ;
+	public final int getBottles() {
+		return this.bottles;
+	}
 
-        }
-    }
+	public final void setBottles(int v) {
 
-    public final int getTemperature() {
-        return this.m_temperature;
-    }
+			this.bottles = v;
 
-    public final void setTemperature(int b) {
-            this.m_temperature = b;
+	}
 
-    }
+	public final String getReference() {
+		return this.ref;
+	}
 
-    public final int getYear() {
-        return this.m_year;
-    }
+	public final void setReference(String s) {
+	
+			this.ref = s;
 
-    public final void setYear(int v) {
-        if (v > 0 && v < 65536 && v != this.m_year) {
-            this.m_year = v;
+	}
 
-        }
-    }
+	public final int getTemperature() {
+		return this.temperature;
+	}
 
-    public final int getGeneralNote() {
-        return this.m_generalNote;
-    }
+	public final void setTemperature(int b) {
+		this.temperature = b;
 
-    public final void setGeneralNote(int b) {
-            this.m_generalNote = b;
+	}
 
-    }
+	public final int getYear() {
+		return this.year;
+	}
 
-    public final float getBuyPrice() {
-        return this.m_buyPrice;
-    }
+	public final void setYear(int v) {
+		
+			this.year = v;
 
-    public final void setBuyPrice(float f) {
-        if (f > -1.0f && f != this.m_buyPrice) {
-            this.m_buyPrice = f;
+	}
 
-        }
-    }
+	public final int getGeneralNote() {
+		return this.generalNote;
+	}
 
-    public final float getEvaluatePrice() {
-        return this.m_evaluatePrice;
-    }
+	public final void setGeneralNote(int b) {
+		this.generalNote = b;
 
-    public final void setEvaluatePrice(float f) {
-        if (f > -1.0f && f != this.m_evaluatePrice) {
-            this.m_evaluatePrice = f;
-        }
-    }
+	}
 
-    public final float getDegree() {
-        return this.m_degree;
-    }
+	public final float getBuyPrice() {
+		return this.buyPrice;
+	}
 
-    public final void setDegree(float f) {
-        if (f > -1.0f && f != this.m_degree) {
-            this.m_degree = f;
-        }
-    }
+	public final void setBuyPrice(float f) {
+		if (f > -1.0f && f != this.buyPrice) {
+			this.buyPrice = f;
 
-    public final int getConsumeMin() {
-        return this.m_consumeMin;
-    }
+		}
+	}
 
-    public final void setConsumeMin(int v) {
-        if (v > 0 && v < 65536 && v != this.m_consumeMin) {
-            this.m_consumeMin = v;
-        }
-    }
+	public final float getEvaluatePrice() {
+		return this.evaluatePrice;
+	}
 
-    public final int getConsumeMax() {
-        return this.m_consumeMax;
-    }
+	public final void setEvaluatePrice(float f) {
+		
+			this.evaluatePrice = f;
+		
+	}
 
-    public final void setConsumeMax(int v) {
-        if (v > 0 && v < 65536 && v != this.m_consumeMax) {
-            this.m_consumeMax = v;
-        }
-    }
+	public final float getDegree() {
+		return this.degree;
+	}
 
-    public final int getBestMin() {
-        return this.m_bestMin;
-    }
+	public final void setDegree(float f) {
+		
+			this.degree = f;
+		
+	}
 
-    public final void setBestMin(int v) {
-        if (v > 0 && v < 65536 && v != this.m_bestMin) {
-            this.m_bestMin = v;
-        }
-    }
+	public final int getConsumeMin() {
+		return this.consumeMin;
+	}
 
-    public final int getBestMax() {
-        return this.m_bestMax;
-    }
+	public final void setConsumeMin(int v) {
+		
+			this.consumeMin = v;
+		
+	}
 
-    public final void setBestMax(int v) {
-        if (v > 0 && v < 65536 && v != this.m_bestMax) {
-            this.m_bestMax = v;
-        }
-    }
+	public final int getConsumeMax() {
+		return this.consumeMax;
+	}
 
-    public final Date getCreationTime() {
-        return this.m_creationTime;
-    }
+	public final void setConsumeMax(int v) {
+		if (v > 0 && v < 65536 && v != this.consumeMax) {
+			this.consumeMax = v;
+		}
+	}
 
-    public final Date getLastUpdate() {
-        return this.m_updateTime;
-    }
+	public final int getBestMin() {
+		return this.bestMin;
+	}
 
-    public final Owner getOwner() {
- /*       if (this.m_ownerId.equals("0000")) {
-            return Owner.getEmpty();
-        }
-        Owner co = (Owner)this.getCellar().get(ObjectType.Owner, this.m_ownerId);
-        if (co == null) {
-            this.m_ownerId = "0000";
-            co = Owner.getEmpty();
-        }*/
-        return this.m_owner;
-    }
+	public final void setBestMin(int v) {
+		if (v > 0 && v < 65536 && v != this.bestMin) {
+			this.bestMin = v;
+		}
+	}
 
-    public final void setOwner(Owner o) {
-        if (o == null) {
-            if (!this.m_ownerId.equals("0000")) {
-                this.m_ownerId = "0000";
-            }
-        } else if (!this.m_ownerId.equals(o.getSystemUid())) {
-            this.m_ownerId = o.getSystemUid();
-        }
-    }
+	public final int getBestMax() {
+		return this.bestMax;
+	}
 
-    public final Image getImage() {
-        if (this.m_imageId.equals("0000")) {
-            return null;
-        }
-        Image img = (Image)this.getCellar().get(ObjectType.Image, this.m_imageId);
-        if (img == null) {
-            this.m_imageId = "0000";
-        }
-        return img;
-    }
+	public final void setBestMax(int v) {
+		if (v > 0 && v < 65536 && v != this.bestMax) {
+			this.bestMax = v;
+		}
+	}
 
-    private RackItemCollection getCellar() {
-		// TODO Auto-generated method stub
+	public final Date getCreationTime() {
+		return this.creationTime;
+	}
+
+	public final Date getLastUpdate() {
+		return this.updateTime;
+	}
+
+	public final Owner getOwner() {
+		return this.owner;
+	}
+
+	public final void setOwner(Owner o) {
+		this.owner = o;
+	}
+
+	public final Image getImage() {
+
+		return this.image;
+	}
+
+	private RackItemCollection getCellar() {
 		return null;
 	}
 
 	public final void setImage(Image i) {
-        if (i == null) {
-            if (!this.m_imageId.equals("0000")) {
-                this.m_imageId = "0000";
-            }
-        } else if (!this.m_imageId.equals(i.getSystemUid())) {
-            this.m_imageId = i.getSystemUid();
-        }
-    }
 
-    public final boolean hasImage() {
-        return !this.m_imageId.equals("0000");
-    }
+		this.image = i;
 
-    public final Category getCategory() {
-        return this.m_category;
-    }
+	}
 
-    public final void setCategory(Category co) {
-        if (co == null) {
-            if (!this.m_categoryId.equals("0000")) {
-                this.m_categoryId = "0000";
-            }
-        } else if (!this.m_categoryId.equals(co.getSystemUid())) {
-            this.m_categoryId = co.getSystemUid();
-        }
-    }
+	public final boolean hasImage() {
+		return !this.image.equals("0000");
+	}
 
-    public final Area getArea() {
+	public final Category getCategory() {
+		return this.category;
+	}
 
-        return this.m_area;
-    }
+	public final void setCategory(Category co) {
+		this.category = co;
+	}
 
-    public final void setArea(Area co) {
-        if (co == null) {
-            if (!this.m_areaId.equals("0000")) {
-                this.m_areaId = "0000";
+	public final Area getArea() {
 
-            }
-        } else if (!this.m_areaId.equals(co.getSystemUid())) {
-            this.m_areaId = co.getSystemUid();
+		return this.area;
+	}
 
-        }
-    }
+	public final void setArea(Area co) {
+		this.area = co;
+	}
 
-    public final Classification getClassification() {
+	public final Classification getClassification() {
 
-        return this.m_classification;
-    }
+		return this.classification;
+	}
 
-    public final void setClassification(Classification co) {
-    		this.m_classification = co;
-    }
+	public final void setClassification(Classification co) {
+		this.classification = co;
+	}
 
-    public final BottleType getBottleType() {
+	public final BottleType getBottleType() {
 
-        return this.m_bottleType;
-    }
+		return this.bottleType;
+	}
 
-    public final void setBottleType(BottleType co) {
-	  this.m_bottleType = co;
-    }
+	public final void setBottleType(BottleType co) {
+		this.bottleType = co;
+	}
 
-    public final TypeOfWine getCepage() {
-       return this.m_typeOfWine;
-    }
+	public final TypeOfWine getCepage() {
+		return this.typeOfWine;
+	}
 
-    public final void setCepage(TypeOfWine co) {
-        if (co == null) {
-            if (!this.m_cepageId.equals("0000")) {
-                this.m_cepageId = "0000";
-            }
-        } else if (!this.m_cepageId.equals(co.getSystemUid())) {
-            this.m_cepageId = co.getSystemUid();
-        }
-    }
+	public final void setCepage(TypeOfWine co) {
+		this.typeOfWine = co;
+	}
 
-    public final Name getAppellation() {
+	public final Name getAppellation() {
 
-        return this.m_appellation;
-    }
+		return this.appellation;
+	}
 
-    public final void setAppellation(Name co) {
-    	this.m_appellation=co;
-        
-    }
+	public final void setAppellation(Name co) {
+		this.appellation = co;
 
-    public final Country getCountry() {
+	}
 
-        return this.m_country;
-    }
+	public final Country getCountry() {
 
-    public final void setCountry(Country co) {
-     this.m_country = co;
-    }
+		return this.country;
+	}
 
-/*    public final CellarObjectCollection getAssemblies() {
-        if (this.m_assemblies == null) {
-            this.m_assemblies = this.getCellar().getChilds(this, ObjectType.Assembly);
-            this.m_assemblies.sort(new AssemblyComparer());
-        }
-        return this.m_assemblies;
-    }
+	public final void setCountry(Country co) {
+		this.country = co;
+	}
 
- 
+	/*
+	 * public final CellarObjectCollection getAssemblies() { if (this.m_assemblies
+	 * == null) { this.m_assemblies = this.getCellar().getChilds(this,
+	 * ObjectType.Assembly); this.m_assemblies.sort(new AssemblyComparer()); }
+	 * return this.m_assemblies; }
+	 * 
+	 * 
+	 * 
+	 * public final RackItemCollection getRackItems() { if (this.m_rackItems ==
+	 * null) { this.m_rackItems = new RackItemCollection(null); } return
+	 * this.m_rackItems; }
+	 * 
+	 * 
+	 * 
+	 * public final CellarObjectCollection getPurchasesSales() { if
+	 * (this.m_purchases == null) { this.m_purchases =
+	 * this.getCellar().getChilds(this, ObjectType.PurchaseSales);
+	 * this.m_purchases.sort(new PurchaseSalesComparer()); } return
+	 * this.m_purchases; }
+	 * 
+	 * 
+	 * 
+	 * public final CellarObjectCollection getNotes() { if (this.m_notes == null) {
+	 * this.m_notes = this.getCellar().getChilds(this, ObjectType.Note);
+	 * this.m_notes.sort(new NoteComparer()); } return this.m_notes; }
+	 * 
+	 */
 
-    public final RackItemCollection getRackItems() {
-        if (this.m_rackItems == null) {
-            this.m_rackItems = new RackItemCollection(null);
-        }
-        return this.m_rackItems;
-    }
+	protected final void setInternalCuvee(Cuvee c) {
+		this.internalCuvee = c;
+		this.internalCuvee.internalsetWine(this);
+	}
 
+	protected final Cuvee getInternalCuvee() {
 
+		return this.internalCuvee;
+	}
 
-    public final CellarObjectCollection getPurchasesSales() {
-        if (this.m_purchases == null) {
-            this.m_purchases = this.getCellar().getChilds(this, ObjectType.PurchaseSales);
-            this.m_purchases.sort(new PurchaseSalesComparer());
-        }
-        return this.m_purchases;
-    }
+	public final String getCuvee() {
+		return this.getInternalCuvee().getName();
+	}
 
+	public final void setCuvee(String s) {
+		if (!this.getInternalCuvee().getName().equals(s)) {
+			this.getInternalCuvee().setName(s);
 
+		}
+	}
 
-    public final CellarObjectCollection getNotes() {
-        if (this.m_notes == null) {
-            this.m_notes = this.getCellar().getChilds(this, ObjectType.Note);
-            this.m_notes.sort(new NoteComparer());
-        }
-        return this.m_notes;
-    }
+	public final void delete() {
+		/*
+		 * int i; while (this.getRackItems().size() > 0) {
+		 * this.getRackItems().get(0).consume(); } for (i = 0; i <
+		 * this.getPurchasesSales().size(); ++i) {
+		 * this.getPurchasesSales().get(i).delete(); } for (i = 0; i <
+		 * this.getNotes().size(); ++i) { this.getNotes().get(i).delete(); }
+		 * super.delete();
+		 */
+	}
 
-*/
+	/*
+	 * public final void createBackupPoint() { this.m_prop.clear();
+	 * this.m_prop.put("Name", this.getName()); this.m_prop.put("Comment",
+	 * this.getComment()); this.m_prop.put("Reference", this.getReference());
+	 * this.m_prop.put("Temperature", this.getTemperature());
+	 * this.m_prop.put("Year", this.getYear()); this.m_prop.put("BestMax",
+	 * this.getBestMax()); this.m_prop.put("BestMin", this.getBestMin());
+	 * this.m_prop.put("ConsumeMin", this.getConsumeMin());
+	 * this.m_prop.put("ConsumeMax", this.getConsumeMax());
+	 * this.m_prop.put("EvaluatePrice", Float.valueOf(this.getEvaluatePrice()));
+	 * this.m_prop.put("Degree", Float.valueOf(this.getDegree()));
+	 * this.m_prop.put("BuyPrice", Float.valueOf(this.getBuyPrice()));
+	 * this.m_prop.put("Appellation", this.getAppellation());
+	 * this.m_prop.put("Area", this.getArea()); this.m_prop.put("BottleType",
+	 * this.getBottleType()); this.m_prop.put("Category", this.getCategory());
+	 * this.m_prop.put("Color", this.getColor()); this.m_prop.put("Classification",
+	 * this.getClassification()); this.m_prop.put("Cepage", this.getCepage());
+	 * this.m_prop.put("Country", this.getCountry()); this.m_prop.put("Owner",
+	 * this.getOwner()); this.m_prop.put("GeneralNote", this.getGeneralNote());
+	 * this.m_prop.put("Food", this.getFood()); this.m_prop.put("Cuvee",
+	 * this.getCuvee()); this.m_prop.put("Bottles", this.getBottles());
+	 * this.m_prop.put("ManualManagement", this.isManualManagment()); }
+	 */
 
-    protected final void setInternalCuvee(Cuvee c) {
-        this.m_internalCuvee = c;
-        this.m_internalCuvee.internalsetWine(this);
-    }
+	public final float getTotalPurchases() {
+		float ret = 0.0f;
+		/*
+		 * for (int i = 0; i < this.getPurchasesSales().size(); ++i) { PurchaseSales
+		 * sales = (PurchaseSales)this.getPurchasesSales().get(i); ret +=
+		 * sales.getAmount(); }
+		 */
+		return ret;
+	}
 
-    protected final Cuvee getInternalCuvee() {
-/*        if (this.m_internalCuvee == null) {
-            this.m_internalCuvee = new Cuvee();
-            this.m_internalCuvee.setCellar(this.getCellar());
-            this.m_internalCuvee.setWine(this);
-            this.m_internalCuvee.setState(ObjectState.New);
-        }*/
-        return this.m_internalCuvee;
-    }
+	public final float getTotalEvaluate() {
+		if (this.isManualManagment()) {
+			return (float) this.getBottles() * this.getEvaluatePrice();
+		}
+		return 0.0f;// (float)this.getRackItems().size() * this.getEvaluatePrice();
+	}
 
-    public final String getCuvee() {
-        return this.getInternalCuvee().getName();
-    }
-
-    public final void setCuvee(String s) {
-        if (!this.getInternalCuvee().getName().equals(s)) {
-            this.getInternalCuvee().setName(s);
-
-        }
-    }
-
-
-
-    public final void delete() {
-/*        int i;
-        while (this.getRackItems().size() > 0) {
-            this.getRackItems().get(0).consume();
-        }
-        for (i = 0; i < this.getPurchasesSales().size(); ++i) {
-            this.getPurchasesSales().get(i).delete();
-        }
-        for (i = 0; i < this.getNotes().size(); ++i) {
-            this.getNotes().get(i).delete();
-        }
-        super.delete();*/
-    }
-
-/*    public final void createBackupPoint() {
-        this.m_prop.clear();
-        this.m_prop.put("Name", this.getName());
-        this.m_prop.put("Comment", this.getComment());
-        this.m_prop.put("Reference", this.getReference());
-        this.m_prop.put("Temperature", this.getTemperature());
-        this.m_prop.put("Year", this.getYear());
-        this.m_prop.put("BestMax", this.getBestMax());
-        this.m_prop.put("BestMin", this.getBestMin());
-        this.m_prop.put("ConsumeMin", this.getConsumeMin());
-        this.m_prop.put("ConsumeMax", this.getConsumeMax());
-        this.m_prop.put("EvaluatePrice", Float.valueOf(this.getEvaluatePrice()));
-        this.m_prop.put("Degree", Float.valueOf(this.getDegree()));
-        this.m_prop.put("BuyPrice", Float.valueOf(this.getBuyPrice()));
-        this.m_prop.put("Appellation", this.getAppellation());
-        this.m_prop.put("Area", this.getArea());
-        this.m_prop.put("BottleType", this.getBottleType());
-        this.m_prop.put("Category", this.getCategory());
-        this.m_prop.put("Color", this.getColor());
-        this.m_prop.put("Classification", this.getClassification());
-        this.m_prop.put("Cepage", this.getCepage());
-        this.m_prop.put("Country", this.getCountry());
-        this.m_prop.put("Owner", this.getOwner());
-        this.m_prop.put("GeneralNote", this.getGeneralNote());
-        this.m_prop.put("Food", this.getFood());
-        this.m_prop.put("Cuvee", this.getCuvee());
-        this.m_prop.put("Bottles", this.getBottles());
-        this.m_prop.put("ManualManagement", this.isManualManagment());
-    }*/
-
-
-
-    public final float getTotalPurchases() {
-        float ret = 0.0f;
-/*        for (int i = 0; i < this.getPurchasesSales().size(); ++i) {
-            PurchaseSales sales = (PurchaseSales)this.getPurchasesSales().get(i);
-            ret += sales.getAmount();
-        }*/
-        return ret;
-    }
-
-    public final float getTotalEvaluate() {
-        if (this.isManualManagment()) {
-            return (float)this.getBottles() * this.getEvaluatePrice();
-        }
-        return 0.0f;//(float)this.getRackItems().size() * this.getEvaluatePrice();
-    }
-
-    public final String getAllRackItems() {
-        StringBuilder builder = new StringBuilder();
-/*        Rack rk = null;
-        for (int i = 0; i < this.getRackItems().size(); ++i) {
-            RackItem item = this.getRackItems().get(i);
-            if (item.getParent() != rk) {
-                rk = item.getParent();
-                builder.append(rk.getName() + " : ");
-            }
-            builder.append(item.getLegend() + "  ");
-        }
-        if (builder.length() > 0) {
-            builder.deleteCharAt(builder.length() - 1);
-        }*/
-        return builder.toString();
-    }
+	public final String getAllRackItems() {
+		StringBuilder builder = new StringBuilder();
+		/*
+		 * Rack rk = null; for (int i = 0; i < this.getRackItems().size(); ++i) {
+		 * RackItem item = this.getRackItems().get(i); if (item.getParent() != rk) { rk
+		 * = item.getParent(); builder.append(rk.getName() + " : "); }
+		 * builder.append(item.getLegend() + "  "); } if (builder.length() > 0) {
+		 * builder.deleteCharAt(builder.length() - 1); }
+		 */
+		return builder.toString();
+	}
 }
-
