@@ -19,7 +19,9 @@ import com.vaadin.ui.TextField;
 import net.spark.app.BeanLocator;
 import net.spark.backend.data.entity.Children;
 import net.spark.backend.data.entity.Customer;
+import net.spark.ui.navigation.NavigationManager;
 import net.spark.ui.view.admin.AbstractCrudView;
+import net.spark.ui.view.orderedit.OrderEditView;
 
 @SpringView
 public class CustomerView extends AbstractCrudView<Customer> {
@@ -29,7 +31,9 @@ public class CustomerView extends AbstractCrudView<Customer> {
 	private final CustomerViewDesign customerViewDesign;
 
 	private boolean passwordRequired;
-
+	  @Autowired
+	  
+	NavigationManager navigationManager;
 	/**
 	 * Custom validator to be able to decide dynamically whether the password
 	 * field is required or not (empty value when updating the user is
@@ -74,7 +78,9 @@ public class CustomerView extends AbstractCrudView<Customer> {
 			
 			populateChildItem(listener.getFirstSelectedItem().get().getChildrenList());
 		});
-
+		getViewComponent().returnB.addClickListener(e->{
+			navigationManager.navigateTo(OrderEditView.class,"return");
+		});
 	}
 
 	private void addEmptyChildItem() {
@@ -195,6 +201,10 @@ public class CustomerView extends AbstractCrudView<Customer> {
 	@Override
 	protected Focusable getFirstFormField() {
 		return getViewComponent().email;
+	}
+	
+	protected Button getReturn() {
+		return getViewComponent().returnB;
 	}
 
 }

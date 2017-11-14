@@ -36,6 +36,7 @@ public class OrderService {
 	private CustomerRepository customerRepository;
 
 	private UserService userService;
+	private ProductService productService ;
 
 	private static Set<OrderState> notAvailableStates;
 
@@ -83,7 +84,17 @@ public class OrderService {
 			item.setNewState(OrderState.NEW);
 			order.getHistory().add(item);
 		}
-
+  // update stock;
+		order.getItems().forEach(orderItem->{
+			
+			Product p = getProductService().load(orderItem.getProduct().getId());
+			
+             int count = p.getStock().getCount() - orderItem.getQuantity();
+             if (count <=0) throw new OutOfStockException("You are of of stock of " + p.getName() + ",current stock :"+p.getStock().getCount()
+            		 +" quantify requested : "+orderItem.getQuantity());
+			p.getStock().setCount(count);
+             getProductService().save(p);
+		});
 		return getOrderRepository().save(order);
 	}
 
@@ -216,11 +227,23 @@ public class OrderService {
 		}
 		return customerRepository;
 	}
-
+         
 	protected UserService getUserService() {
 		if (userService == null) {
 			userService = BeanLocator.find(UserService.class);
 		}
 		return userService;
+	}
+
+	public ProductService getProductService() {
+		if (productService == null) {
+			productService = BeanLocator.find(ProductService.class);
+		}
+		return productService;
+		
+	}
+
+	public void setProductService(ProductService productService) {
+		this.productService = productService;
 	}
 }

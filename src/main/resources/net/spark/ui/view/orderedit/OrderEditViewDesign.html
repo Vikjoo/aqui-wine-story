@@ -2,7 +2,7 @@
 <html>
  <head>
   <meta charset="UTF-8">
-  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;apptheme&quot;}">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;apptheme&quot;}">
   <meta name="vaadin-version" content="8.0.5">
   <meta name="package-mapping" content="com_vaadin_template_orders_ui_view_orders:net.spark.ui.view.orders">
   <meta name="package-mapping" content="com_vaadin_template_orders_ui_components:net.spark.ui.components">
@@ -10,7 +10,7 @@
  </head>
  <body>
   <vaadin-vertical-layout spacing="false" margin-top="false">
-   <vaadin-css-layout style-name="order-form responsive" responsive width-full>
+   <vaadin-css-layout style-name="order-form responsive" responsive width="61.6%">
     <vaadin-horizontal-layout id="reportHeader" width-full _id="reportHeader">
      <vaadin-label style-name="h4 colored" id="orderId" plain-text _id="orderId">
        #182 
@@ -19,6 +19,15 @@
        New order 
      </vaadin-label>
      <com_vaadin_template_orders_ui_view_orderedit-order-state-select id="state" _id="state" :middle :right></com_vaadin_template_orders_ui_view_orderedit-order-state-select>
+    </vaadin-horizontal-layout>
+    <vaadin-label style-name="header" width-full plain-text>
+      Invoice Type 
+    </vaadin-label>
+    <vaadin-horizontal-layout style-name="half" width-full>
+     <com_vaadin_template_orders_ui_view_orderedit-currency-combo-box id="currency" _id="currency"></com_vaadin_template_orders_ui_view_orderedit-currency-combo-box>
+    </vaadin-horizontal-layout>
+    <vaadin-horizontal-layout style-name="half" width-full>
+     <com_vaadin_template_orders_ui_view_orderedit-pricing-strategy-combo-box id="pricingStrategy" _id="pricingStrategy"></com_vaadin_template_orders_ui_view_orderedit-pricing-strategy-combo-box>
     </vaadin-horizontal-layout>
     <vaadin-label style-name="header" width-full plain-text>
       Due 
@@ -36,9 +45,11 @@
     <vaadin-label style-name="header" width-full plain-text>
       Customer 
     </vaadin-label>
-    <vaadin-text-field style-name="half" id="fullName" placeholder="Firstname Lastname" width-full data-property-id="customer.fullName" _id="fullName"></vaadin-text-field>
-    <vaadin-text-field style-name="half" id="phone" placeholder="Phone number" width-full data-property-id="customer.phoneNumber" _id="phone"></vaadin-text-field>
+    <com_vaadin_template_orders_ui_view_orderedit-customer-combo-box></com_vaadin_template_orders_ui_view_orderedit-customer-combo-box>
     <vaadin-text-field id="details" placeholder="Additional details" width-full data-property-id="customer.details" _id="details"></vaadin-text-field>
+    <vaadin-button icon="fonticon://Vaadin-Icons/e66b" style-name="quarter tiny link" id="pickCustomer" width="30px" height="26px" _id="pickCustomer">
+      Pick Customer 
+    </vaadin-button>
     <vaadin-label style-name="header" width-full plain-text>
       Products 
     </vaadin-label>
@@ -46,7 +57,19 @@
     <vaadin-button icon="fonticon://Vaadin-Icons/e7fe" style-name="add-items link" id="addItems" width-full height="100px" _id="addItems">
       Add item 
     </vaadin-button>
-    <vaadin-label style-name="total huge bold" id="total" width-full plain-text _id="total">
+    <vaadin-label style-name="header" width-full plain-text>
+      Payment Term &amp; Discount 
+    </vaadin-label>
+    <vaadin-horizontal-layout style-name="half" width-full>
+     <com_vaadin_template_orders_ui_view_orderedit-payment-term-combo-box description="Payment Term" id="payment Term" width="347px" _id="paymentTerm"></com_vaadin_template_orders_ui_view_orderedit-payment-term-combo-box>
+    </vaadin-horizontal-layout>
+    <vaadin-horizontal-layout style-name="half" width-full>
+     <vaadin-slider id="discount" width="370px"></vaadin-slider>
+    </vaadin-horizontal-layout>
+    <vaadin-label caption="VAT" style-name="total huge bold" id="vat" width-full plain-text _id="total1">
+      0.00 
+    </vaadin-label>
+    <vaadin-label caption="Total" style-name="total huge bold" id="total" width-full plain-text _id="total">
       0.00 
     </vaadin-label>
     <com_vaadin_template_orders_ui_view_orderedit-order-history id="history" width-full _id="history"></com_vaadin_template_orders_ui_view_orderedit-order-history>

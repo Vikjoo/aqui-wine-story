@@ -30,6 +30,13 @@ public class Order extends AbstractEntity {
 	@NotNull
 	@OneToOne
 	private PickupLocation pickupLocation;
+	@OneToOne
+	private Currency currency;
+	@OneToOne
+	private PricingStrategy pricingStrategy;
+
+	@OneToOne
+	private PaymentTerm paymentTerm;
 	@NotNull
 	@OneToOne
 	private Customer customer;
@@ -112,6 +119,30 @@ public class Order extends AbstractEntity {
 
 	public void setState(OrderState state) {
 		this.state = state;
+	}
+
+	public Currency getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(Currency currency) {
+		this.currency = currency;
+	}
+
+	public PricingStrategy getPricingStrategy() {
+		return pricingStrategy;
+	}
+
+	public void setPricingStrategy(PricingStrategy pricingStrategy) {
+		this.pricingStrategy = pricingStrategy;
+	}
+
+	public PaymentTerm getPaymentTerm() {
+		return paymentTerm;
+	}
+
+	public void setPaymentTerm(PaymentTerm paymentTerm) {
+		this.paymentTerm = paymentTerm;
 	}
 
 }

@@ -22,14 +22,19 @@ import com.vaadin.ui.declarative.Design;
 @SuppressWarnings("serial")
 public class ProductAdminViewDesign extends VerticalLayout {
 	protected TextField search;
-	protected Button add;
 	protected Button storage;
+	protected Button add;
 	protected CssLayout listParent;
 	protected Grid<net.spark.backend.data.entity.Product> list;
 	protected VerticalLayout form;
 	protected TextField name;
-	protected TextField price;
+	protected TextField retailPrice;
 	protected TextField typeOfWine;
+	protected TextField costPrice;
+	protected TextField wholeSalePriceHT;
+	protected TextField wholesalePriceTTC;
+	protected TextField puht;
+	protected TextField stock;
 	protected Button update;
 	protected Button cancel;
 	protected Button delete;

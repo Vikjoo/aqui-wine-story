@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
@@ -44,7 +45,9 @@ public class Customer extends AbstractEntity {
 	@NotEmpty
 	@Size(max = 255)
 	private String lastName;
-	
+	@Embedded 
+	private Address address;
+	private String name;
 	
 	private LocalDate dob;
 	
@@ -53,6 +56,33 @@ public class Customer extends AbstractEntity {
 	@OrderColumn(name = "id")
 	private List<Children> childrenList = new ArrayList<>();
 	
+
+	private LocalDate doe;
+	@Size(max = 255)
+	private String tom;
+	
+	private LocalDate memSince;
+	@Size(max = 255)
+	private String company;
+	@Size(max = 255)
+	private String billAddress;
+	@Size(max = 255)
+	private String deliveryAddress;
+	
+	@Size(max = 255)
+	private String homeNumber;
+	@Size(max = 255)
+	private String mobileNumber;
+	@Size(max = 255)
+	private String qrCode;
+	@Size(max = 255)
+	private String coursedFollowed;
+	@Size(max = 255)
+	private String note;
+	@Size(max = 255)
+	private String status;
+	
+	private boolean locked = false;
 	public LocalDate getDoe() {
 		return doe;
 	}
@@ -197,32 +227,6 @@ public class Customer extends AbstractEntity {
 
 
 
-	private LocalDate doe;
-	@Size(max = 255)
-	private String tom;
-	
-	private LocalDate memSince;
-	@Size(max = 255)
-	private String company;
-	@Size(max = 255)
-	private String billAddress;
-	@Size(max = 255)
-	private String deliveryAddress;
-	
-	@Size(max = 255)
-	private String homeNumber;
-	@Size(max = 255)
-	private String mobileNumber;
-	@Size(max = 255)
-	private String qrCode;
-	@Size(max = 255)
-	private String coursedFollowed;
-	@Size(max = 255)
-	private String note;
-	@Size(max = 255)
-	private String status;
-	
-	private boolean locked = false;
 	public Customer() {
 		// Empty constructor is needed by Spring Data / JPA
 	}
@@ -307,6 +311,30 @@ public class Customer extends AbstractEntity {
 
 	public void setChildrenList(List<Children> childrenList) {
 		this.childrenList = childrenList;
+	}
+
+
+
+	public String getName() {
+		return name;
+	}
+
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+
+	public Address getAddress() {
+		return address;
+	}
+
+
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 

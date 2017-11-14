@@ -18,6 +18,7 @@ public class OrderItem extends AbstractEntity {
 	private int quantity = 1;
 	@Size(max = 255)
 	private String comment;
+	private int calculatedPrice;
 
 	public OrderItem() {
 		// Empty constructor is needed by Spring Data / JPA
@@ -45,6 +46,14 @@ public class OrderItem extends AbstractEntity {
 
 	public void setComment(String comment) {
 		this.comment = comment;
+	}
+
+	public int getCalculatedPrice() {
+		return calculatedPrice;
+	}
+
+	public void setCalculatedPrice(int calculatedPrice) {
+		this.calculatedPrice = calculatedPrice;
 	}
 
 }

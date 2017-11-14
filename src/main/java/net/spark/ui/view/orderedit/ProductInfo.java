@@ -25,7 +25,7 @@ import com.vaadin.ui.Label;
 @PrototypeScope
 public class ProductInfo extends ProductInfoDesign {
 
-	private final DollarPriceConverter priceFormatter;
+	
 
 	private final ViewEventBus viewEventBus;
 
@@ -37,8 +37,11 @@ public class ProductInfo extends ProductInfoDesign {
 	private boolean reportMode = false;
 
 	@Autowired
-	public ProductInfo(DollarPriceConverter priceFormatter, ViewEventBus viewEventBus) {
-		this.priceFormatter = priceFormatter;
+	private CurrentCurrency currentCurrency;
+
+	@Autowired
+	public ProductInfo( ViewEventBus viewEventBus) {
+	
 		this.viewEventBus = viewEventBus;
 
 	}
@@ -49,13 +52,14 @@ public class ProductInfo extends ProductInfoDesign {
 		binder.setRequiredConfigurator(null);
 		binder.forField(quantity).withConverter(new StringToIntegerConverter(-1, "Please enter a number"))
 				.bind("quantity");
+		
 		binder.bindInstanceFields(this);
 		binder.addValueChangeListener(e -> fireProductInfoChanged());
 
 		product.addSelectionListener(e -> {
 			Optional<Product> selectedProduct = e.getFirstSelectedItem();
-			int productPrice = selectedProduct.map(Product::getPrice).orElse(0);
-			updatePrice(productPrice);
+	
+			updatePrice(selectedProduct);
 		});
 
 		readOnlyComment.setWidth("100%");
@@ -65,9 +69,17 @@ public class ProductInfo extends ProductInfoDesign {
 		delete.addClickListener(e -> fireOrderItemDeleted());
 	}
 
-	private void updatePrice(int productPrice) {
-		price.setValue(priceFormatter.convertToPresentation(productPrice, new ValueContext(Locale.US)));
+	private void updatePrice(Optional<Product> selectedProduct) {
+		calculatedPrice.setData(selectedProduct);
+		int calulatedPrice = currentCurrency.calculatePrice(selectedProduct.get());
+		 getItem().setCalculatedPrice(calulatedPrice);
+		 calculatedPrice.setValue(currentCurrency.getPriceConverter().convertToPresentation(calulatedPrice, null));
+		
+		//unitvat.setValue(currentCurrency.getPriceConverter().convertToPresentation(selectedProduct.get().getPublicPriceHT(), null));
+		//wholesale.setValue(currentCurrency.getPriceConverter().convertToPresentation(selectedProduct.get().getWholeSalePriceHT(), null));
 	}
+
+
 
 	private void fireProductInfoChanged() {
 		viewEventBus.publish(this, new ProductInfoChangeEvent());
@@ -127,4 +139,6 @@ public class ProductInfo extends ProductInfoDesign {
 	public void focus() {
 		product.focus();
 	}
+
+	
 }

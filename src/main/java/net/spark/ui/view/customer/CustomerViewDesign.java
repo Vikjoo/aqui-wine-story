@@ -53,7 +53,7 @@ public class CustomerViewDesign extends VerticalLayout {
 	protected Button cancel;
 	protected Button print;
 	protected Button delete;
-
+	protected Button returnB;
 	public CustomerViewDesign() {
 		Design.read(this);
 	}

@@ -1,7 +1,7 @@
 package net.spark.backend.util;
 
 public class WineSheetTemplate {
-	public static String [] WINE = {"Pays/région",
+	public static String [] WINE = {"Reference","Pays/région",
 	"Couleur", 
 	"Format",
 	"Appellation",   

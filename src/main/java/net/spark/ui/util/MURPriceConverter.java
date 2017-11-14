@@ -11,18 +11,19 @@ import com.vaadin.spring.annotation.SpringComponent;
 
 
 @SpringComponent
-public class DollarPriceConverter extends StringToIntegerConverter {
+public class MURPriceConverter extends StringToIntegerConverter {
 
+	private static final Locale IN_LOCALE = new Locale("en","IN");
 	private static final String ERROR_MSG = "Invalid prices, please re-check the value";
 	private StringToDoubleConverter doubleConverter = new StringToDoubleConverter(ERROR_MSG);
 	private StringToDoubleConverter currencyConverter = new StringToDoubleConverter(ERROR_MSG) {
 		@Override
 		protected NumberFormat getFormat(Locale locale) {
-			return NumberFormat.getCurrencyInstance(locale);
+			return NumberFormat.getCurrencyInstance(IN_LOCALE);
 		}
 	};
 
-	public DollarPriceConverter() {
+	public MURPriceConverter() {
 		super(ERROR_MSG);
 	}
 
@@ -42,6 +43,6 @@ public class DollarPriceConverter extends StringToIntegerConverter {
 		// 100 -> $1.00
 		
 		double price = (double) value / 100.0;
-		return currencyConverter.convertToPresentation(price, context);
+		return currencyConverter.convertToPresentation(price, new ValueContext(IN_LOCALE));
 	}
 }

@@ -3,6 +3,8 @@ package net.spark.ui.view.orderedit;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.vaadin.artur.spring.dataprovider.PageableDataProvider;
@@ -20,10 +22,14 @@ import net.spark.backend.service.ProductService;
 public class ProductComboBoxDataProvider extends PageableDataProvider<Product, String> {
 
 	private transient CrudService<Product> productService;
-
+	@Autowired
+	@Lazy
+	private CurrentCurrency currentCurrency;
 	@Override
 	protected Page<Product> fetchFromBackEnd(Query<Product, String> query, Pageable pageable) {
-		return getProductService().findAnyMatching(query.getFilter(), pageable);
+		Page<Product> pageProduct = getProductService().findAnyMatching(query.getFilter(), pageable);
+
+		return pageProduct;
 	}
 
 	@Override

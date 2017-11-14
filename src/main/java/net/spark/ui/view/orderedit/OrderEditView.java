@@ -1,7 +1,6 @@
 package net.spark.ui.view.orderedit;
 
 import java.time.LocalTime;
-import java.util.Locale;
 import java.util.Optional;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -9,24 +8,30 @@ import java.util.stream.Stream;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.vaadin.spring.events.EventBus.ViewEventBus;
 
 import com.vaadin.data.BeanValidationBinder;
 import com.vaadin.data.BindingValidationStatus;
 import com.vaadin.data.HasValue;
-import com.vaadin.data.ValueContext;
+import com.vaadin.data.HasValue.ValueChangeEvent;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewBeforeLeaveEvent;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.spring.annotation.SpringView;
-import net.spark.app.BeanLocator;
-import net.spark.backend.data.OrderState;
-import net.spark.backend.data.entity.Order;
-import net.spark.backend.data.entity.OrderItem;
-import net.spark.ui.components.ConfirmPopup;
-import net.spark.ui.util.DollarPriceConverter;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.Label;
+
+import net.spark.app.BeanLocator;
+import net.spark.backend.data.OrderState;
+import net.spark.backend.data.entity.Currency;
+import net.spark.backend.data.entity.Order;
+import net.spark.backend.data.entity.OrderItem;
+import net.spark.backend.data.entity.PricingStrategy;
+import net.spark.backend.data.entity.Product;
+import net.spark.ui.components.ConfirmPopup;
+import net.spark.ui.navigation.NavigationManager;
+import net.spark.ui.view.customer.CustomerView;
 
 @SpringView(name = "order")
 public class OrderEditView extends OrderEditViewDesign implements View {
@@ -37,18 +42,24 @@ public class OrderEditView extends OrderEditViewDesign implements View {
 
 	private final OrderEditPresenter presenter;
 
-	private final DollarPriceConverter priceConverter;
+	
 
 	private BeanValidationBinder<Order> binder;
 
 	private Mode mode;
 
 	private boolean hasChanges;
-
+	private final ViewEventBus viewEventBus;
 	@Autowired
-	public OrderEditView(OrderEditPresenter presenter, DollarPriceConverter priceConverter) {
+	private CurrentCurrency currentCurrency;
+	
+	NavigationManager navigationManager;
+	@Autowired
+	public OrderEditView(NavigationManager navigationManager,OrderEditPresenter presenter, ViewEventBus viewEventBus) {
 		this.presenter = presenter;
-		this.priceConverter = priceConverter;
+		
+		this.viewEventBus = viewEventBus;
+		this.navigationManager = navigationManager;
 	}
 
 	@PostConstruct
@@ -74,16 +85,80 @@ public class OrderEditView extends OrderEditViewDesign implements View {
 
 		// Must bind sub properties manually until
 		// https://github.com/vaadin/framework/issues/9210 is fixed
-		binder.bind(fullName, "customer.lastName");
-		binder.bind(phone, "customer.phoneNumber");
+		//binder.bind(fullName, "customer.firstName");
+		//binder.bind(fullName, "customer.lastName");
+		//binder.bind(phone, "customer.phoneNumber");
 		binder.bind(details, "customer.details");
 
 		// Track changes manually as we use setBean and nested binders
-		binder.addValueChangeListener(e -> hasChanges = true);
-
+		binder.addValueChangeListener(e ->binderHaveChanged(e) );
+		//currency.setEmptySelectionAllowed(false);
+        //currency.addValueChangeListener(e->fireCurrencyChange(e));
 		addItems.addClickListener(e -> addEmptyOrderItem());
 		cancel.addClickListener(e -> presenter.editBackCancelPressed());
 		ok.addClickListener(e -> presenter.okPressed());
+		
+		pickCustomer.addClickListener(e->
+			navigationManager.navigateTo(CustomerView.class)
+		);
+	}
+
+	private Object binderHaveChanged(ValueChangeEvent<Object> e) {
+		hasChanges = true;
+		Object value = e.getValue();
+		if(value instanceof Currency || value instanceof PricingStrategy) {
+			if(value instanceof Currency)
+		currentCurrency.setCurrentCurrency((Currency)value);
+		if(value instanceof PricingStrategy)
+		currentCurrency.setCurrentPricingStrategy((PricingStrategy)value);
+		
+
+		for (Component c : productInfoContainer) {
+			if (c instanceof ProductInfo ) {
+				//((ProductInfo) c).product.getDataProvider().refreshAll();
+				
+				Optional<Product> product = (Optional<Product>)((ProductInfo) c).calculatedPrice.getData(); 
+				if(null!= product) {
+				int price = currentCurrency.calculatePrice(product.get());
+				
+				
+				((ProductInfo) c).calculatedPrice.setValue(currentCurrency.getPriceConverter().convertToPresentation(price, null));
+				}else {
+					((ProductInfo) c).calculatedPrice.setValue(currentCurrency.getPriceConverter().convertToPresentation(0, null));	
+				}
+				//break;
+				//((ProductInfo) c).product.getDataProvider().refreshAll();
+			}
+		}
+		viewEventBus.publish(this,new CurrencyChangeEvent(currentCurrency.getCurrentCurrency()));  
+		//presenter.enterView(null);
+		}
+		return null;
+	}
+
+	
+
+
+
+	private int retrievePricing(Product product) {
+		int price = 0;
+		switch(currentCurrency.getCurrentPricingStrategy().getPricingType()) {
+		case DISCOUNT_WHOLESALE:
+			price = product.getWholeSalePriceHT();
+			break;
+		case VAT_ENABLE:
+			price = product.getPublicPriceHT();
+			break;
+		case WHOLESALE:
+			price = product.getWholeSalePriceHT();
+			break;
+		default:
+			price = product.getPrice();
+			break;
+		
+		}
+		
+		return price;
 	}
 
 	@Override
@@ -91,7 +166,10 @@ public class OrderEditView extends OrderEditViewDesign implements View {
 		String orderId = event.getParameters();
 		if ("".equals(orderId)) {
 			presenter.enterView(null);
-		} else {
+		}else if ("return".equals(orderId)) {
+			System.out.println("returned");
+		}
+		else {
 			presenter.enterView(Long.valueOf(orderId));
 		}
 	}
@@ -156,7 +234,8 @@ public class OrderEditView extends OrderEditViewDesign implements View {
 	}
 
 	protected void setSum(int sum) {
-		total.setValue(priceConverter.convertToPresentation(sum, new ValueContext(Locale.getDefault())));
+		total.setValue(currentCurrency.getPriceConverter().convertToPresentation(sum, null));
+		//total.setValue(priceConverter.convertToPresentation(sum, new ValueContext(Locale.getDefault())));
 	}
 
 	public void showNotFound() {
