@@ -135,7 +135,7 @@ public class DataGenerator implements HasLogger {
 			getLogger().info("... generating pickup locations");
 			createPickupLocations(pickupLocations);
 			getLogger().info("... generating orders");
-			//createOrders(orders);
+			createOrders(orders);
 			createWine(wineRepository);
 			getLogger().info("Generated demo data");
 		};

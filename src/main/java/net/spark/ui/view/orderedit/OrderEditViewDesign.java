@@ -9,13 +9,15 @@ import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.DateField;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.Slider;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.declarative.Design;
 import net.spark.ui.view.orderedit.CurrencyComboBox;
 import net.spark.ui.view.orderedit.OrderHistory;
 import net.spark.ui.view.orderedit.OrderStateSelect;
-import net.spark.ui.view.orderedit.PaymentTermComboBox;
+import net.spark.ui.view.orderedit.PaymentConditionComboBox;
+import net.spark.ui.view.orderedit.PaymentMethodComboBox;
 import net.spark.ui.view.orderedit.PickupLocationComboBox;
 import net.spark.ui.view.orderedit.PricingStrategyComboBox;
 
@@ -45,7 +47,11 @@ public class OrderEditViewDesign extends VerticalLayout {
 	protected Button pickCustomer;
 	protected CssLayout productInfoContainer;
 	protected Button addItems;
-	protected PaymentTermComboBox paymentTerm;
+	protected PaymentConditionComboBox paymentCondition;
+	protected PaymentMethodComboBox paymentMethod;
+	@PropertyId("paymentTerm")
+	protected TextField paymentTerm1;
+	protected Slider discount;
 	protected Label total1;
 	protected Label total;
 	protected OrderHistory history;

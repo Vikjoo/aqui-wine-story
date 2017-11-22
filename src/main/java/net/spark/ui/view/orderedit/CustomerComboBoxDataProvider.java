@@ -46,7 +46,8 @@ public class CustomerComboBoxDataProvider extends PageableDataProvider<Customer,
 	@Override
 	protected List<QuerySortOrder> getDefaultSortOrders() {
 		List<QuerySortOrder> sortOrders = new ArrayList<>();
-		sortOrders.add(new QuerySortOrder("name", SortDirection.ASCENDING));
+		sortOrders.add(new QuerySortOrder("lastName", SortDirection.ASCENDING));
+		sortOrders.add(new QuerySortOrder("firstName", SortDirection.ASCENDING));
 		return sortOrders;
 	}
 

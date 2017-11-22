@@ -16,6 +16,8 @@ import com.vaadin.spring.annotation.UIScope;
 
 import net.spark.cellar.ui.view.WineAdminView;
 import net.spark.ui.navigation.NavigationManager;
+import net.spark.ui.view.admin.PaymentCondition.PaymentConditionAdminView;
+import net.spark.ui.view.admin.PaymentMethod.PaymentMethodAdminView;
 import net.spark.ui.view.admin.product.ProductAdminView;
 import net.spark.ui.view.admin.user.UserAdminView;
 import net.spark.ui.view.customer.CustomerView;
@@ -56,6 +58,8 @@ public class MainView extends MainViewDesign implements ViewDisplay {
 		attachNavigation(users, UserAdminView.class);
 		attachNavigation(products, ProductAdminView.class);
 		attachNavigation(inventory, WineAdminView.class);
+		attachNavigation(paymentCondition, PaymentConditionAdminView.class);
+		attachNavigation(paymentMethod, PaymentMethodAdminView.class);
 		logout.addClickListener(e -> logout());
 	}
 

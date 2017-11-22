@@ -6,23 +6,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.vaadin.spring.annotation.PrototypeScope;
 
 import com.vaadin.spring.annotation.SpringComponent;
-import com.vaadin.ui.ComboBox;
 
-import net.spark.backend.data.entity.Customer;
+import net.spark.backend.data.entity.PaymentMethod;
+import net.spark.backend.data.entity.PaymentTerm;
+
+import com.vaadin.ui.ComboBox;
 
 @SpringComponent
 @PrototypeScope
-public class CustomerComboBox extends ComboBox<Customer> {
+public class PaymentMethodComboBox extends ComboBox<PaymentMethod> {
 
-	private final CustomerComboBoxDataProvider dataProvider;
+	private final PaymentMethodComboBoxDataProvider dataProvider;
 
 	@Autowired
-	public CustomerComboBox(CustomerComboBoxDataProvider dataProvider) {
+	public PaymentMethodComboBox(PaymentMethodComboBoxDataProvider dataProvider) {
 		this.dataProvider = dataProvider;
 		setEmptySelectionAllowed(false);
 		setTextInputAllowed(false);
-		setPlaceholder("Customer ");
-		setItemCaptionGenerator(p -> p.getFirstName() + " " + p.getLastName() + " " + p.getAddress().getCity());
+		setPlaceholder("Payment Method");
+		setItemCaptionGenerator(PaymentMethod::getName);
 	}
 
 	@PostConstruct

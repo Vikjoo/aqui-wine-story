@@ -7,6 +7,7 @@
   <meta name="package-mapping" content="com_vaadin_template_orders_ui_view_orders:net.spark.ui.view.orders">
   <meta name="package-mapping" content="com_vaadin_template_orders_ui_components:net.spark.ui.components">
   <meta name="package-mapping" content="com_vaadin_template_orders_ui_view_orderedit:net.spark.ui.view.orderedit">
+  <meta name="package-mapping" content="net_spark_ui_view_admin_paymentmethod:net.spark.ui.view.admin.PaymentMethod">
  </head>
  <body>
   <vaadin-vertical-layout spacing="false" margin-top="false">
@@ -25,10 +26,9 @@
     </vaadin-label>
     <vaadin-horizontal-layout style-name="half" width-full>
      <com_vaadin_template_orders_ui_view_orderedit-currency-combo-box id="currency" _id="currency"></com_vaadin_template_orders_ui_view_orderedit-currency-combo-box>
-    </vaadin-horizontal-layout>
-    <vaadin-horizontal-layout style-name="half" width-full>
      <com_vaadin_template_orders_ui_view_orderedit-pricing-strategy-combo-box id="pricingStrategy" _id="pricingStrategy"></com_vaadin_template_orders_ui_view_orderedit-pricing-strategy-combo-box>
     </vaadin-horizontal-layout>
+   
     <vaadin-label style-name="header" width-full plain-text>
       Due 
     </vaadin-label>
@@ -45,7 +45,7 @@
     <vaadin-label style-name="header" width-full plain-text>
       Customer 
     </vaadin-label>
-    <com_vaadin_template_orders_ui_view_orderedit-customer-combo-box></com_vaadin_template_orders_ui_view_orderedit-customer-combo-box>
+    <com_vaadin_template_orders_ui_view_orderedit-customer-combo-box width="779px"></com_vaadin_template_orders_ui_view_orderedit-customer-combo-box>
     <vaadin-text-field id="details" placeholder="Additional details" width-full data-property-id="customer.details" _id="details"></vaadin-text-field>
     <vaadin-button icon="fonticon://Vaadin-Icons/e66b" style-name="quarter tiny link" id="pickCustomer" width="30px" height="26px" _id="pickCustomer">
       Pick Customer 
@@ -58,13 +58,15 @@
       Add item 
     </vaadin-button>
     <vaadin-label style-name="header" width-full plain-text>
-      Payment Term &amp; Discount 
+      Payment Condition &amp; Payment Term &amp; Payment method &amp; Discount 
     </vaadin-label>
-    <vaadin-horizontal-layout style-name="half" width-full>
-     <com_vaadin_template_orders_ui_view_orderedit-payment-term-combo-box description="Payment Term" id="payment Term" width="347px" _id="paymentTerm"></com_vaadin_template_orders_ui_view_orderedit-payment-term-combo-box>
+    <vaadin-horizontal-layout style-name="half"  width-full>
+     <com_vaadin_template_orders_ui_view_orderedit-payment-condition-combo-box caption="Payment Condition" id="paymentCondition"  _id="paymentCondition"></com_vaadin_template_orders_ui_view_orderedit-payment-condition-combo-box>
+     <com_vaadin_template_orders_ui_view_orderedit-payment-method-combo-box caption="Payment Method" id="paymentMethod" _id="paymentMethod"></com_vaadin_template_orders_ui_view_orderedit-payment-method-combo-box>
     </vaadin-horizontal-layout>
     <vaadin-horizontal-layout style-name="half" width-full>
-     <vaadin-slider id="discount" width="370px"></vaadin-slider>
+     <vaadin-text-field caption="Payment Term" placeholder="days"  data-property-id="paymentTerm" _id="paymentTerm1" ></vaadin-text-field>
+     <vaadin-slider caption="Discount" id="discount" width="214px" _id="discount"></vaadin-slider>
     </vaadin-horizontal-layout>
     <vaadin-label caption="VAT" style-name="total huge bold" id="vat" width-full plain-text _id="total1">
       0.00 

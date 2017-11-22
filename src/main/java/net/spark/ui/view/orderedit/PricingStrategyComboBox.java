@@ -8,21 +8,21 @@ import org.vaadin.spring.annotation.PrototypeScope;
 import com.vaadin.spring.annotation.SpringComponent;
 import com.vaadin.ui.ComboBox;
 
-import net.spark.backend.data.entity.Customer;
+import net.spark.backend.data.entity.PricingStrategy;
 
 @SpringComponent
 @PrototypeScope
-public class CustomerComboBox extends ComboBox<Customer> {
+public class PricingStrategyComboBox extends ComboBox<PricingStrategy> {
 
-	private final CustomerComboBoxDataProvider dataProvider;
+	private final PricingStrategyComboBoxDataProvider dataProvider;
 
 	@Autowired
-	public CustomerComboBox(CustomerComboBoxDataProvider dataProvider) {
+	public PricingStrategyComboBox(PricingStrategyComboBoxDataProvider dataProvider) {
 		this.dataProvider = dataProvider;
 		setEmptySelectionAllowed(false);
 		setTextInputAllowed(false);
-		setPlaceholder("Customer ");
-		setItemCaptionGenerator(p -> p.getFirstName() + " " + p.getLastName() + " " + p.getAddress().getCity());
+		setPlaceholder("Pricing");
+		setItemCaptionGenerator(PricingStrategy::getName);
 	}
 
 	@PostConstruct

@@ -36,7 +36,12 @@ public class Order extends AbstractEntity {
 	private PricingStrategy pricingStrategy;
 
 	@OneToOne
-	private PaymentTerm paymentTerm;
+	private PaymentCondition paymentCondition;
+	
+	@OneToOne
+	private PaymentMethod paymentMethod;
+
+	private int paymentTerm;
 	@NotNull
 	@OneToOne
 	private Customer customer;
@@ -46,7 +51,7 @@ public class Order extends AbstractEntity {
 	private List<OrderItem> items;
 	@NotNull
 	private OrderState state;
-
+      
 	private boolean paid;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -137,12 +142,30 @@ public class Order extends AbstractEntity {
 		this.pricingStrategy = pricingStrategy;
 	}
 
-	public PaymentTerm getPaymentTerm() {
+	public PaymentCondition getPaymentCondition() {
+		return paymentCondition;
+	}
+
+	public void setPaymentCondition(PaymentCondition paymentCondition) {
+		this.paymentCondition = paymentCondition;
+	}
+
+	public PaymentMethod getPaymentMethod() {
+		return paymentMethod;
+	}
+
+	public void setPaymentMethod(PaymentMethod paymentMethod) {
+		this.paymentMethod = paymentMethod;
+	}
+
+	public int getPaymentTerm() {
 		return paymentTerm;
 	}
 
-	public void setPaymentTerm(PaymentTerm paymentTerm) {
+	public void setPaymentTerm(int paymentTerm) {
 		this.paymentTerm = paymentTerm;
 	}
+
+
 
 }
