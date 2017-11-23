@@ -18,7 +18,7 @@ import com.vaadin.ui.UI;
 @Theme("apptheme")
 @SpringUI
 @Viewport("width=device-width,initial-scale=1.0,user-scalable=no")
-@Title("#Wine#")
+@Title("#Aqui BackOffice#")
 public class AppUI extends UI implements HasLogger {
 
 	private final SpringViewProvider viewProvider;
@@ -43,6 +43,7 @@ public class AppUI extends UI implements HasLogger {
 
 	@Override
 	protected void init(VaadinRequest vaadinRequest) {
+		
 		viewProvider.setAccessDeniedViewClass(AccessDeniedView.class);
 		setContent(mainView);
 

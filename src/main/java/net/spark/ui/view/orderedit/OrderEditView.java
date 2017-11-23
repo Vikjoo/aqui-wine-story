@@ -1,5 +1,6 @@
 package net.spark.ui.view.orderedit;
 
+import java.io.File;
 import java.time.LocalTime;
 import java.util.Optional;
 import java.util.stream.IntStream;
@@ -14,10 +15,15 @@ import com.vaadin.data.BeanValidationBinder;
 import com.vaadin.data.BindingValidationStatus;
 import com.vaadin.data.HasValue;
 import com.vaadin.data.HasValue.ValueChangeEvent;
+import com.vaadin.data.converter.StringToIntegerConverter;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewBeforeLeaveEvent;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.server.FileDownloader;
+import com.vaadin.server.FileResource;
+import com.vaadin.server.Resource;
+import com.vaadin.server.VaadinService;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.Label;
@@ -29,6 +35,7 @@ import net.spark.backend.data.entity.Order;
 import net.spark.backend.data.entity.OrderItem;
 import net.spark.backend.data.entity.PricingStrategy;
 import net.spark.backend.data.entity.Product;
+import net.spark.backend.service.InvoiceService;
 import net.spark.ui.components.ConfirmPopup;
 import net.spark.ui.navigation.NavigationManager;
 import net.spark.ui.view.customer.CustomerView;
@@ -54,10 +61,15 @@ public class OrderEditView extends OrderEditViewDesign implements View {
 	private CurrentCurrency currentCurrency;
 	
 	NavigationManager navigationManager;
+
+
+
+	private InvoiceService invoiceService;
 	@Autowired
-	public OrderEditView(NavigationManager navigationManager,OrderEditPresenter presenter, ViewEventBus viewEventBus) {
+	public OrderEditView(NavigationManager navigationManager,OrderEditPresenter presenter, 
+			ViewEventBus viewEventBus,InvoiceService invoiceService) {
 		this.presenter = presenter;
-		
+		this.invoiceService = invoiceService;
 		this.viewEventBus = viewEventBus;
 		this.navigationManager = navigationManager;
 	}
@@ -81,6 +93,8 @@ public class OrderEditView extends OrderEditViewDesign implements View {
 		// report validation errors for the first invalid field and it is most
 		// intuitive for the user that we start from the top if there are
 		// multiple errors.
+		binder.forField(this.paymentTerm1).withConverter(new StringToIntegerConverter("Int to String")).bind("paymentTerm");
+		
 		binder.bindInstanceFields(this);
 
 		// Must bind sub properties manually until
@@ -97,10 +111,15 @@ public class OrderEditView extends OrderEditViewDesign implements View {
 		addItems.addClickListener(e -> addEmptyOrderItem());
 		cancel.addClickListener(e -> presenter.editBackCancelPressed());
 		ok.addClickListener(e -> presenter.okPressed());
+		 String basepath = VaadinService.getCurrent()
+		            .getBaseDirectory().getAbsolutePath();
+		Resource res = new FileResource(invoiceService.generateInvoice(null));
 		
-		pickCustomer.addClickListener(e->
-			navigationManager.navigateTo(CustomerView.class)
-		);
+		FileDownloader fd = new FileDownloader(res);
+//		pickCustomer.addClickListener(e->
+//			navigationManager.navigateTo(CustomerView.class)
+//		);
+		fd.extend(pickCustomer);
 	}
 
 	private Object binderHaveChanged(ValueChangeEvent<Object> e) {

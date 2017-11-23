@@ -206,6 +206,8 @@ public class OrderEditPresenter implements Serializable, HasLogger {
 				enterView(id);
 			}
 		}
+		
+		
 	}
 
 	public void okPressed() {

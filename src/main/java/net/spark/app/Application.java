@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.vaadin.spring.events.annotation.EnableEventBus;
 
+
 import net.spark.app.security.SecurityConfig;
 import net.spark.backend.OrderRepository;
 import net.spark.backend.data.entity.Order;

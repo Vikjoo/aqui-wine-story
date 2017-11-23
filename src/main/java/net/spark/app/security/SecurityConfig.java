@@ -50,6 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		// Allow access to static resources ("/VAADIN/**")
 		reg = reg.antMatchers("/VAADIN/**").permitAll();
+		reg = reg.antMatchers("/pdf/**").permitAll();
 		// Require authentication for all URLS ("/**")
 		reg = reg.antMatchers("/**").hasAnyAuthority(Role.getAllRoles());
 		HttpSecurity sec = reg.and();
