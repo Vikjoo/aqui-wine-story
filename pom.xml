@@ -361,7 +361,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>${springboot.version}</version>
 			</plugin>
-			<plugin>
+<!-- 			<plugin>
 				<artifactId>maven-enforcer-plugin</artifactId>
 				<version>1.4.1</version>
 				<executions>
@@ -383,7 +383,7 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
